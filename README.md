@@ -35,6 +35,8 @@ pnpm build
 
 Access the url: http://localhost:4459
 
+> If use `pnpm start` you can view in http://localhost:8085/examples/index.html or http://localhost:8085/build/index.html if already make build
+
 ## Rules for use
 To work fine is need the following the requeriments below:
 

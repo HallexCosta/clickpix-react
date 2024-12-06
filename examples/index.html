@@ -8,12 +8,20 @@
     <script src="https://plugin.openpix.com.br/v1/openpix.js" async></script>
     <script>
       // import openpix-sdk from gist as cdn
-      fetch('https://gist.githubusercontent.com/HallexCosta/3548628247321ad5eb557031b6a7088e/raw/b04f272fec64c75e0ef4e13bdeb7eaebddfeeced/openpix-sdk.js')
+      fetch('https://gist.githubusercontent.com/HallexCosta/3548628247321ad5eb557031b6a7088e/raw/7a85ce6c65db72cfba42cb64a766f14d1ec2af25/openpix-sdk.js')
         .then(response => response.text())
         .then(scriptContent => {
           const script = document.createElement('script');
           script.textContent = scriptContent;
-          document.body.appendChild(script);
+          document.head.appendChild(script);
+
+          fetch('https://gist.githubusercontent.com/HallexCosta/ae375d1403abdb0c20adc9161a045439/raw/1b79052d34771796624ea1ecaec83dbf07eadd6c/openpix-sdk-cofiguration.js')
+            .then(response => response.text())
+            .then(scriptContent => {
+              const script = document.createElement('script');
+              script.textContent = scriptContent;
+              document.body.appendChild(script);
+            }).catch(err => console.error('Erro ao carregar o script:', err));
         })
         .catch(err => console.error('Erro ao carregar o script:', err));
     </script>
@@ -40,5 +48,47 @@
       data-product-id="2"
     >
     </div>
+
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOMContentLoaded')
+        console.log(window.$openpixSDK)
+
+        window.$openpixSDK.addEvent('beforeCreateCharge', async (nextFn, products, productId) => {
+          console.log('beforeHook inside Called')
+          console.log({ nextFn, products, productId })
+
+          const order = await createOrderWC(products.get(productId))
+          if (!order) {
+            return
+          }
+
+          const orderId = order.orderId
+          const oldProductOrder = window.$openpixSDK.get(productId, 'products')
+          console.log({oldProductOrder})
+
+          window.$openpixSDK.updateIn(productId, 'products', {
+            ...oldProductOrder,
+            orderId,
+            comment: `WooCoommerce #${orderId}`,
+            additionalInfo: `orderId:${orderId},productId:${productId},${oldProductOrder.additionalInfo}`,
+            productId
+          })
+
+          console.log('calling nextFn')
+          return nextFn()
+        })
+      })
+
+      async function createOrderWC(order) {
+        // ...logic to create order in external application
+
+        await new Promise(resolve => setTimeout(resolve, 2000))
+
+        return {
+          orderId: Math.random()
+        }
+      }
+    </script> -->
   </body>
 </html>
