@@ -1,0 +1,34 @@
+{
+  "name": "woovi-openpix-sdk",
+  "description": "React as Plugin Lib",
+  "version": "1.0.0",
+  "dependencies": {
+    "@types/react": "^18.3.12",
+    "http-server": "^14.1.1",
+    "qrcode.react": "^4.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-query": "^3.39.3"
+  },
+  "devDependencies": {
+    "@rspack/cli": "1.1.4",
+    "@rspack/core": "1.1.4",
+    "@rspack/plugin-node-polyfill": "0.5.8",
+    "@rspack/plugin-react-refresh": "1.0.0",
+    "@swc/core": "^1.9.3",
+    "@types/react-dom": "^19.0.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "react-refresh": "^0.14.2",
+    "rspack-plugin-dotenv": "^0.0.3",
+    "tsconfig-paths-webpack-plugin": "^4.2.0",
+    "typescript": "^5.7.2",
+    "webpack-merge": "^6.0.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production rspack build --config rspack/rspackProdConfig.js",
+    "dev": "rspack serve --config rspack/rspackDevConfig.js",
+    "start": "http-server -w -p 8085 ./build"
+  }
+}

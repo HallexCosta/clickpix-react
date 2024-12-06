@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New ClickPix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://plugin.openpix.com.br/v1/openpix.js" async></script>
+    <script>
+      // import openpix-sdk from gist as cdn
+      fetch('https://gist.githubusercontent.com/HallexCosta/3548628247321ad5eb557031b6a7088e/raw/b04f272fec64c75e0ef4e13bdeb7eaebddfeeced/openpix-sdk.js')
+        .then(response => response.text())
+        .then(scriptContent => {
+          const script = document.createElement('script');
+          script.textContent = scriptContent;
+          document.body.appendChild(script);
+        })
+        .catch(err => console.error('Erro ao carregar o script:', err));
+    </script>
+  </head>
+  <body>
+    <div id="root"></div> 
+
+    <div 
+      class="clickpix"
+      data-value="200" 
+      data-additional-info="chargeType:clickpix,product:123" 
+      data-variant="green"
+      data-customer-fields="phone,email,address"
+      data-product-id="1"
+    >
+    </div>
+
+    <div 
+      class="clickpix"
+      data-value="600" 
+      data-additional-info="chargeType:clickpix,product:123" 
+      data-variant="green"
+      data-customer-fields="phone,email,address"
+      data-product-id="2"
+    >
+    </div>
+  </body>
+</html>

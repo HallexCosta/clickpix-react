@@ -1,0 +1,18 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "typeRoots": ["./sdk/@types/index.d.ts", "./src/@types"],
+    "noEmitOnError": false,
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./src"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
