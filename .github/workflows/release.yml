@@ -9,15 +9,15 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v4
         with:
           node-version: 16
-        - run: npm i -g pnpm
-        - run: pnpm install
-        - run: pnpm build
-        - run: npx semantic-release
-          env: 
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm i -g pnpm
+      - run: pnpm install
+      - run: pnpm build
+      - run: npx semantic-release
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
