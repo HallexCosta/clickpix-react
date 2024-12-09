@@ -30,12 +30,12 @@ pnpm build
 
 **Prod**
 ```sh
-pnpm build
+pnpm start
 ```
 
 Access the url: http://localhost:4459
 
-> If use `pnpm start` you can view in http://localhost:8085/examples/index.html or http://localhost:8085/build/index.html if already make build
+> If use `pnpm start` you can view in http://localhost:8085/examples/0.1.0/index.html or http://localhost:8085/build/index.html if already make build
 
 ## Rules for use
 To work fine is need the following the requeriments below:
@@ -52,7 +52,7 @@ To work fine is need the following the requeriments below:
 - [x] Have a `/v1/openpix.js` plugin cdn
 - [x] Have a tailwind cdn (it's needed because tailwind is not compiled into openpix-SDK yet)
 
-Follow an example of implementation in [examples/index.html](./examples/index.html)
+Follow an example of implementation in [examples/index.html](./examples/0.1.0/index.html)
 
 
 [rspack-boilerplate](https://github.com/sibelius/rspack-boilerplate)
