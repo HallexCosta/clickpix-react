@@ -6,15 +6,9 @@ const config = {
     [
       '@semantic-release/git',
       {
-        assets: [
-          {
-            path: 'build/main.js',
-            label: 'openpix-sdk.js'
-          },
-          { path: 'build/main.js.map', label: 'openpix-sdk.js.map' }
-        ],
+        assets: ['build/main.js'],
         message:
-          'chore(release): ${nextRelease.version} [skip-ci]\n\n${nextRelease.notes}'
+          'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
       }
     ],
     [
