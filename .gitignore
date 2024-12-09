@@ -61,7 +61,6 @@ lerna-debug.log
 .eslintcache
 
 .turbo
-build/**
 dist/**
 .next/**
 
