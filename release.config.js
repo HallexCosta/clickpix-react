@@ -4,15 +4,20 @@ const config = {
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
     [
-      '@semantic-release',
+      '@semantic-release/github',
       {
-        assets: ['build/*.js', 'build/*.js.map'],
+        assets: [
+          {
+            path: 'build/main.js',
+            label: 'JS distribution'
+          },
+          { path: 'build/main.js.map', label: 'JS Map distribution' }
+        ],
         message: [
           'chore(release): ${nextRelease.version} [skip-ci]\n\n${nextRelease.notes}'
         ]
       }
-    ],
-    '@semantic-release/github'
+    ]
   ]
 }
 
