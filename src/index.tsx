@@ -126,7 +126,16 @@ const App = () => {
   )
 }
 
-const rootEl = document.getElementById('root')
+let rootEl = document.getElementById('root')
+
+if (!rootEl) {
+  const root = document.createElement('div')
+  root.setAttribute('id', 'root')
+  document.body.append(root)
+}
+
+rootEl = document.getElementById('root')
+
 if (rootEl) {
   const root = createRoot(rootEl)
   root.render(
