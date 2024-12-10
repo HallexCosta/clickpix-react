@@ -83,4 +83,5 @@ firebase-config.json
 assets
 yarn.lock
 build
-dist
+# dist
+.dev
