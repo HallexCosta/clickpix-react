@@ -13,7 +13,8 @@ const cwd = process.cwd()
  */
 module.exports = merge(rspackCommonConfig, {
   output: {
-    path: path.join(cwd, 'build'),
+    path: path.join(cwd, 'dist'),
+    filename: 'openix-sdk.js',
     uniqueName: 'openix-sdk.js'
   },
   // externals: {
