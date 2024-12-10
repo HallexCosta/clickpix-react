@@ -1,6 +1,9 @@
 import { memo, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { createRoot } from 'react-dom/client'
+
+import './index.css'
+
 import { $initializeOpenpixSDK } from '../sdk/$openpixSDK'
 import { ChargeDetailWithIframeByCorrelationID } from './app/modules/charge/components/ChargeDetailWithIframeByCorrelationID'
 import { Checkout } from './app/modules/checkout/components/Checkout'
