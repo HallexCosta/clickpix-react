@@ -131,7 +131,7 @@ let rootEl = document.getElementById('root')
 if (!rootEl) {
   const root = document.createElement('div')
   root.setAttribute('id', 'root')
-  document.body.append(root)
+  document.body.prepend(root)
 }
 
 rootEl = document.getElementById('root')
