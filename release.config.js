@@ -3,7 +3,7 @@ const config = {
     'main',
     {
       name: 'beta',
-      prerelease: false
+      prerelease: true
     }
   ],
   plugins: [
