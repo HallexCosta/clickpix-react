@@ -1,12 +1,18 @@
 const config = {
-  branches: ['main'],
+  branches: [
+    'main',
+    {
+      name: 'beta',
+      prerelease: false
+    }
+  ],
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
     [
       '@semantic-release/git',
       {
-        assets: ['build/main.js'],
+        assets: ['dist/openpix-sdk.js'],
         message:
           'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
       }
@@ -16,10 +22,10 @@ const config = {
       {
         assets: [
           {
-            path: 'build/main.js',
+            path: 'dist/openpix-sdk.js',
             label: 'openpix-sdk.js'
           },
-          { path: 'build/main.js.map', label: 'openpix-sdk.js.map' }
+          { path: 'dist/openpix-sdk.js.map', label: 'openpix-sdk.js.map' }
         ]
       }
     ]
