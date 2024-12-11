@@ -63,7 +63,7 @@ export const Checkout = () => {
 
     if (!order)
       return console.log(
-        `order cannot be empty, null or undefined to create a new charge`
+        'order cannot be empty, null or undefined to create a new charge'
       )
 
     const additionalInfo = order.additionalInfo
@@ -85,6 +85,13 @@ export const Checkout = () => {
       additionalInfo
     }
     console.log({ chargeBody })
+
+    window.$openpix.push([
+      'config',
+      {
+        appID: order.appid
+      }
+    ])
 
     window.$openpix.push(['pix', chargeBody])
     // const data = await fetchPixChargeCreate({
@@ -162,7 +169,7 @@ export const Checkout = () => {
     //       .catch((e) => console.log('cai no erro', e.message))
     //   }, 2000)
     // }
-    fetchSyncPaymentLink(productId, order.correlationID!)
+    fetchSyncPaymentLink(productId, order.correlationID!, order.appid)
   }
 
   const handleCreateOrder = async () => {
