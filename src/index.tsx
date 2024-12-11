@@ -47,16 +47,36 @@ const App = () => {
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLDivElement>('.clickpix')
 
+    const requiredDataAttributes = new Map([
+      [
+        'product-id',
+        (...args: string[]) =>
+          console.error('[data-product-id] need a unique value', ...args)
+      ],
+      [
+        'appid',
+        (...args: string[]) =>
+          console.error('[data-product-id] need a unique value', ...args)
+      ]
+    ])
+
     for (const htmlClickPix of elements) {
       htmlClickPix.classList.add('w-fit')
 
       const productId = htmlClickPix.dataset.productId
+      const appid = htmlClickPix.dataset.appid
+
       if (!productId) {
         console.error('[data-product-id] need a unique value', productId)
         return
       }
+      if (!appid) {
+        console.error('[data-appid] need a value', appid)
+        return
+      }
       if (!products.has(productId)) {
         updateCheckoutData(productId, {
+          appid,
           value: Number(htmlClickPix.dataset.value),
           additionalInfo: htmlClickPix.dataset.additionalInfo,
           status: 'CHARGE_NOT_EMITTED',
