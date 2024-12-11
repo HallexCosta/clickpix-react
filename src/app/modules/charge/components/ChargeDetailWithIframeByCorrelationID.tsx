@@ -32,7 +32,7 @@ export const ChargeDetailWithIframeByCorrelationID = ({
 
   return (
     <div
-      className="modal w-full h-[100vh] absolute z-20 hidden"
+      className="modal w-full h-[100vh] z-20 fixed hidden"
       id="charge-render"
       data-product-id={productId}
       ref={chargeDetailRef}
