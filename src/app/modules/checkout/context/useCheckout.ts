@@ -7,6 +7,7 @@ import {
 } from 'react'
 
 export type Order = {
+  appid: string
   productId?: string
   correlationID?: string
   value?: number
