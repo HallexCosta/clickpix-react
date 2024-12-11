@@ -2,7 +2,10 @@ import { createPromiseWithResolvers } from '../../../../common/createPromiseWith
 import { config } from '../../../../config/config'
 import { GetPixChargeByCorrelationIDQuery } from '../queries/graphql/GetPixChargeByCorrelationIDQuery'
 // correlationID = "2A3lZN4Nj2EY6bEUBtYbxyvRrLk1gf"
-export const fetchPixChargeQuery = async (correlationID) => {
+export const fetchPixChargeQuery = async (
+  correlationID: string,
+  appID: string
+) => {
   const { promise, resolve } = createPromiseWithResolvers()
 
   fetch(config.graphqlURL, {
@@ -17,7 +20,7 @@ export const fetchPixChargeQuery = async (correlationID) => {
     }),
     mode: 'cors',
     headers: {
-      Authorization: config.appID,
+      Authorization: appID,
       'Content-Type': 'application/json'
     }
   })

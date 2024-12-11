@@ -21,7 +21,7 @@ export interface AdditionalInfo {
   value: string
 }
 
-export const fetchPixChargeCreate = (charge: Charge) => {
+export const fetchPixChargeCreate = (charge: Charge, appid: string) => {
   const { promise, resolve } = createPromiseWithResolvers()
 
   fetch(`${config.restApiBaseURL}/charge`, {
@@ -29,7 +29,7 @@ export const fetchPixChargeCreate = (charge: Charge) => {
     body: JSON.stringify(charge),
     mode: 'cors',
     headers: {
-      Authorization: config.appID,
+      Authorization: appid,
       'Content-Type': 'application/json'
     }
   })

@@ -4,16 +4,17 @@ import { fetchPixChargeQuery } from './fetchPixChargeQuery'
 
 export const fetchSyncPaymentLink = (
   productId: string,
-  correlationID: string
+  correlationID: string,
+  appid: string
 ) => {
   const memorySyncPaymentLinkTimeoutId = setTimeout(() => {
     console.log({ correlationID })
-    fetchPixChargeQuery(correlationID)
+    fetchPixChargeQuery(correlationID, appid)
       .then(({ data }) => {
-        console.log('iniciei aqui', data)
+        console.log('start here', data)
 
         if (!data.charge) {
-          return fetchSyncPaymentLink(productId, correlationID)
+          return fetchSyncPaymentLink(productId, correlationID, appid)
         }
 
         const paymentLinkUrl = data.charge.paymentLinkUrl
@@ -26,6 +27,6 @@ export const fetchSyncPaymentLink = (
           }
         ])
       })
-      .catch((e) => console.log('cai no erro', e.message))
+      .catch((e) => console.log('catch the error', e.message))
   }, 2000)
 }
