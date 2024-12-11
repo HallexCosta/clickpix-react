@@ -198,7 +198,7 @@ export const Checkout = () => {
       <div
         id="clickpix-checkout"
         ref={checkoutRef}
-        className="w-full h-full rounded-md mx-auto absolute flex items-center justify-center hidden"
+        className="w-full h-full rounded-md mx-auto flex items-center justify-center fixed hidden"
       >
         <div className="bg-black opacity-20 w-full border-red-500 h-full absolute z-10"></div>
 
