@@ -8,17 +8,10 @@ import {
   EventBus
 } from '../src/app/modules/event-bus/EventBus'
 import { globalProducts } from '../src/app/modules/products/hooks/useProducts'
-import { config } from '../src/config/config'
 
 export const $initializeOpenpixSDK = () => {
   // openpix settings
   window.$openpix = window.$openpix || []
-  window.$openpix.push([
-    'config',
-    {
-      appID: config.appID
-    }
-  ])
 
   // Export SDK for external usage
   const availableStates = ['products']
