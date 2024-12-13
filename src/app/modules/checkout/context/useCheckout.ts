@@ -8,13 +8,14 @@ import {
 
 export type Order = {
   appid: string
-  productId?: string
-  correlationID?: string
+  comment?: string
+  productId: string
+  correlationID: string
   value?: number
   additionalInfo?: string
   status?: string
-  payerTaxID?: string
-  payerEmail?: string
+  payerTaxID: string
+  payerEmail: string
   payerName?: string
   payerPhone?: string
   paymentLinkUrl?: string
