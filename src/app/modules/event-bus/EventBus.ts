@@ -18,10 +18,9 @@ type CheckoutListenerHandlers =
 type ChargeListeenrHandlers = () => void
 
 type EventMap = {
-  // Define seus eventos e os tipos de argumentos
-  event1: [string, number] // Exemplo: o evento "event1" recebe uma string e um número
-  event2: [boolean] // Exemplo: o evento "event2" recebe um booleano
-  event3: [string, boolean] // Exemplo: o evento "event3" recebe uma string e um booleano
+  event1: [string, number]
+  event2: [boolean]
+  event3: [string, boolean]
   any: any
 }
 
