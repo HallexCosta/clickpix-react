@@ -54,8 +54,10 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.json', '.mjs'],
     fallback: {
       fs: false
-    }
+    },
+    tsConfig: path.join(cwd, './tsconfig.app.json')
   },
+
   externals: {
     'node-html-to-image': 'node-html-to-image'
   },

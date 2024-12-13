@@ -29,13 +29,9 @@ module.exports = merge(rspackCommonConfig, {
     }),
     new ReactRefreshPlugin()
   ],
-  resolve: {
-    plugins: [
-      new TsconfigPathsPlugin({
-        configFile: path.join(cwd, './tsconfig.json')
-      })
-    ]
-  },
+  // resolve: {
+  //   tsConfig: path.join(cwd, './tsconfig.app.json')
+  // },
   devServer: {
     port: PORT,
     open: '/#/app',
