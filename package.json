@@ -47,6 +47,7 @@
     "build": "cross-env NODE_ENV=production rspack build --config rspack/rspackProdConfig.js",
     "dev": "rspack serve --config rspack/rspackDevConfig.js",
     "start": "http-server -w -p 8085 .",
-    "lint": "biome format"
+    "check:format": "biome format",
+    "format": "biome format --fix"
   }
 }

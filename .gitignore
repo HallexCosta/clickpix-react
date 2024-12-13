@@ -83,4 +83,4 @@ yarn.lock
 build
 .dev
 
-dist/
+dist/*

@@ -28,8 +28,8 @@ const getWebpackWatchOptions = (ignored = []) => ({
     '*.log',
     '*.swp',
     '*.tmp',
-    ...ignored,
-  ],
-});
+    ...ignored
+  ]
+})
 
-module.exports.getWebpackWatchOptions = getWebpackWatchOptions;
+module.exports.getWebpackWatchOptions = getWebpackWatchOptions
