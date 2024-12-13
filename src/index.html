@@ -76,8 +76,16 @@
         window.$openpixSDK.addEvent('beforeCreateCharge', async (nextFn, products, productId) => {
           console.log('beforeHook inside Called')
           console.log({ nextFn, products, productId })
+          function randomNumberByRange(min, max) {
+            const minCeiled = Math.ceil(min)
+            const maxFloored = Math.floor(max)
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled) // The maximum is inclusive and the minimum is inclusive
+          }
 
-          const order = await createOrderWC(products.get(productId))
+          // const order = await createOrderWC(products.get(productId))
+          const order = {
+            orderId: randomNumberByRange(10000, 20000)
+          }
           if (!order) {
             return
           }
