@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 
 import './index.css'
 
-import { $initializeOpenpixSDK } from '../sdk/$openpixSDK'
+import { $initializeOpenpixSDK } from '@sdk/$openpixSDK'
 import { ChargeDetailWithIframeByCorrelationID } from './app/modules/charge/components/ChargeDetailWithIframeByCorrelationID'
 import { Checkout } from './app/modules/checkout/components/Checkout'
 import { ClickPixButton } from './app/modules/checkout/components/ClickPixButton'
