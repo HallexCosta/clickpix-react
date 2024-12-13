@@ -1,3 +1,4 @@
+const path = require('node:path')
 const NodePolyfill = require('@rspack/plugin-node-polyfill')
 const { DotenvPlugin } = require('rspack-plugin-dotenv')
 
