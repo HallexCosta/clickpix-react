@@ -19,6 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+      - run: echo "${{ secrets.ENV }}" | tr -d '\r' > ./.env
       - run: npm i -g pnpm
       - run: pnpm install
       - run: rm .gitignore
@@ -26,5 +27,3 @@ jobs:
       - run: npx semantic-release
         env: 
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          GRAPHQL_URL: ${{ secrets.GRAPHQL_URL }}
-          REST_API_BASE_URL: ${{ secrets.REST_API_BASE_URL }}
