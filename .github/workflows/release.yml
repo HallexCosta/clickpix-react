@@ -26,3 +26,5 @@ jobs:
       - run: npx semantic-release
         env: 
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GRAPHQL_URL: ${{ secrets.GRAPHQL_URL }}
+          REST_API_BASE_URL: ${{ secrets.REST_API_BASE_URL }}
