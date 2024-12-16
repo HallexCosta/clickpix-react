@@ -1,7 +1,7 @@
-export const createPromiseWithResolvers = () => {
+export const createPromiseWithResolvers = <T>() => {
   let resolve,
     reject = null
-  const promise = new Promise((res, rej) => {
+  const promise = new Promise<T>((res, rej) => {
     resolve = res
     rej = rej
   })
