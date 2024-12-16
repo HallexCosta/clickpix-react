@@ -1,6 +1,11 @@
 const config = {
   branches: [
     'main',
+    '+([0-9])?(.{+([0-9]),x}).x',
+    {
+      name: '+release-([0-9]+).([0-9]+).([0-9]+)',
+      prerelease: false
+    },
     {
       name: 'beta',
       prerelease: true
@@ -10,9 +15,15 @@ const config = {
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
     [
+      '@semantic-release/changelog',
+      {
+        changelogFile: 'docs/CHANGELOG.md'
+      }
+    ],
+    [
       '@semantic-release/git',
       {
-        assets: ['dist/openpix-sdk.js'],
+        assets: ['dist/openpix-sdk.js', 'docs/CHANGELOG.md'],
         message:
           'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
       }
