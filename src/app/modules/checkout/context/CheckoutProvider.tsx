@@ -10,14 +10,18 @@ import { CheckoutContext, type Order } from './useCheckout'
 
 // Provider component
 export const CheckoutProvider = ({ children }) => {
+  const [currentModal, setCurrentModal] = useState<
+    'checkout' | 'pending' | 'paid' | 'expired'
+  >('checkout')
   const [getProduct, updateProduct, products] = useProducts()
   const [requesting, setRequesting] = useState(false)
   const [currentOrder, setCurrentOrder] = useState<Order | null>(null)
   const [currentChargeDetailRef, setCurrentChargeDetailRef] =
     useState<MutableRefObject<HTMLDivElement> | null>(null)
-  const [productId, setProductId] = useState<string>('')
+  const [selectedProductId, setSelectedProductId] = useState<string>('')
 
   const updateCheckoutData = (productId: string, data: Order) => {
+    console.log('updateCheckoutData')
     if (!productId) {
       console.error(
         'cannot update currentOrder if productId is empty string or null'
@@ -27,14 +31,17 @@ export const CheckoutProvider = ({ children }) => {
 
     const oldProduct = getProduct(productId)
 
+    if (!oldProduct) {
+      console.error('Product id not found:', productId)
+      return false
+    }
+
     if (oldProduct?.value !== undefined && data.value !== oldProduct?.value) {
       console.error('The value from charge cannot be changed')
       return false
     }
 
-    setProductId(productId)
     updateProduct(productId, data)
-    setCurrentOrder(getProduct(productId) ?? {})
     return true
   }
   EventBus.subscribe(
@@ -42,37 +49,39 @@ export const CheckoutProvider = ({ children }) => {
     updateCheckoutData
   )
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    // console.log({ productId })
-  }, [productId, getProduct])
+  EventBus.subscribe(
+    CheckoutEventBusEnum.SET_SELECTED_PRODUCT_ID,
+    setSelectedProductId
+  )
+
+  EventBus.subscribe(CheckoutEventBusEnum.SET_CURRENT_MODAL, setCurrentModal)
 
   const checkoutRef = useRef<HTMLDivElement>(null)
   const closeCheckoutModal = () => {
-    if (!checkoutRef.current) return console.log('checkout cannot be null')
+    if (!checkoutRef.current) return console.log('Checkout cannot be null')
 
-    checkoutRef.current.classList.add('hidden')
-    setProductId('')
-    setCurrentOrder({})
+    // checkoutRef.current.classList.add('hidden')
+    setSelectedProductId('')
+    setCurrentOrder(null)
   }
   EventBus.subscribe('closeCheckoutModal', closeCheckoutModal)
 
   const openCheckoutModal = (productId: string) => {
     if (!checkoutRef.current) return console.log('checkout cannot be null')
 
-    checkoutRef.current.classList.remove('hidden')
-    setProductId(productId)
-    setCurrentOrder(getProduct(productId) ?? {})
+    // checkoutRef.current.classList.remove('hidden')
+    setSelectedProductId(productId)
+    setCurrentOrder(getProduct(productId))
   }
-  EventBus.subscribe('openCheckoutModal', openCheckoutModal)
+  // EventBus.subscribe('openCheckoutModal', openCheckoutModal)
 
   return (
     <CheckoutContext.Provider
       value={{
         currentOrder,
         updateCheckoutData,
-        productId,
-        setProductId,
+        selectedProductId,
+        setSelectedProductId,
         checkoutRef,
         closeCheckoutModal,
         openCheckoutModal,
@@ -81,7 +90,9 @@ export const CheckoutProvider = ({ children }) => {
         currentChargeDetailRef,
         setCurrentChargeDetailRef,
         requesting,
-        setRequesting
+        setRequesting,
+        currentModal,
+        setCurrentModal
       }}
     >
       {children}
