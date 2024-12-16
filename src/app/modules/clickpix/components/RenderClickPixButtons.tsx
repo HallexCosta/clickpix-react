@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { createPortal } from 'react-dom'
-import { ClickPixButton } from '../checkout/components/ClickPixButton'
+import { ClickPixButton } from '../../checkout/components/ClickPixButton'
 
 export type RenderClickPixButton = {
   productId: string

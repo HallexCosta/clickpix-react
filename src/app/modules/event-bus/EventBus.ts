@@ -3,7 +3,9 @@ import type { Order } from '../checkout/context/useCheckout'
 export enum CheckoutEventBusEnum {
   UPDATE_CHECKOUT_DATA = 'updateCheckoutData',
   CLOSE_CHECKOUT_MODAL = 'closeCheckoutModal',
-  OPEN_CHECKOUT_MODAL = 'openCheckoutModal'
+  OPEN_CHECKOUT_MODAL = 'openCheckoutModal',
+  SET_SELECTED_PRODUCT_ID = 'setSelectedProductId',
+  SET_CURRENT_MODAL = 'setCurrentModal'
 }
 
 type ListenerHandlerVoid = () => void
