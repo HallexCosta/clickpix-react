@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/HallexCosta/clickpix-react/compare/v2.0.1...v2.0.2) (2024-12-16)
+
+
+### Bug Fixes
+
+* **workflows:** create .env vars before make build ([02e8ffe](https://github.com/HallexCosta/clickpix-react/commit/02e8ffed746dc34a829ddb3f937134bc9293ec09))
+
 # [2.0.0-beta.6](https://github.com/HallexCosta/clickpix-react/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2024-12-16)
 
 
