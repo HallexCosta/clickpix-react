@@ -1,6 +1,8 @@
-export const OrderSvgIcon = () => (
+import { cx } from '@/common/cx'
+
+export const OrderSvgIcon = ({ disabled }: { disabled: boolean }) => (
   <svg
-    className="fill-[#133a6f]"
+    className={cx(!disabled ? 'fill-[#133a6f]' : 'fill-zinc-200')}
     focusable="false"
     aria-hidden="true"
     viewBox="0 0 24 24"
