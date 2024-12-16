@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        woovi: '#43F1C2'
+      }
+    }
   },
   plugins: []
 }
