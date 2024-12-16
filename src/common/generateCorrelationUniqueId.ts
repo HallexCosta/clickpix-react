@@ -1,5 +1,5 @@
 export const generateCorrelationUniqueId = (
-  len: string,
+  len: number,
   chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 ) =>
   [...Array(len)]
