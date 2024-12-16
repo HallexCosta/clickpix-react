@@ -2,7 +2,7 @@ import { createPromiseWithResolvers } from '../../../../common/createPromiseWith
 import { config } from '../../../../config/config'
 import { GetPixChargeByCorrelationIDQuery } from '../queries/graphql/GetPixChargeByCorrelationIDQuery'
 // correlationID = "2A3lZN4Nj2EY6bEUBtYbxyvRrLk1gf"
-export const fetchPixChargeQuery = async (
+export const fetchPixChargeQuery = async <T>(
   correlationID: string,
   appID: string
 ) => {
@@ -28,5 +28,5 @@ export const fetchPixChargeQuery = async (
     .then(resolve)
     .catch(() => resolve(null))
 
-  return promise
+  return promise as T
 }
