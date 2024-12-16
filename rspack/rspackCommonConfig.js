@@ -1,9 +1,10 @@
-const NodePolyfill = require('@rspack/plugin-node-polyfill');
-const { DotenvPlugin } = require('rspack-plugin-dotenv');
+const path = require('node:path')
+const NodePolyfill = require('@rspack/plugin-node-polyfill')
+const { DotenvPlugin } = require('rspack-plugin-dotenv')
 
-const cwd = process.cwd();
+const cwd = process.cwd()
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production'
 
 /**
  * @type {import('@rspack/cli').Configuration}
@@ -11,7 +12,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   context: cwd,
   entry: {
-    main: './src/index.tsx',
+    main: './src/index.tsx'
   },
   module: {
     rules: [
@@ -21,44 +22,47 @@ module.exports = {
         loader: 'builtin:swc-loader',
         options: {
           rspackExperiments: {
-            relay: true,
+            relay: true
           },
           jsc: {
             parser: {
               syntax: 'typescript',
-              tsx: true,
+              tsx: true
             },
             transform: {
               react: {
                 runtime: 'automatic',
                 development: !isProduction,
-                refresh: !isProduction,
-              },
-            },
-          },
+                refresh: !isProduction
+              }
+            }
+          }
         },
-        type: 'javascript/auto',
+        type: 'javascript/auto'
       },
       {
         test: /\.(jpe?g|png|gif|svg|mp3|pdf|csv|xlsx|ttf|woff(2)?)$/i,
-        type: 'asset',
+        type: 'asset'
       },
-    ],
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader']
+      }
+    ]
   },
-  plugins: [
-    new NodePolyfill(),
-    new DotenvPlugin(),
-  ],
+  plugins: [new NodePolyfill(), new DotenvPlugin()],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json', '.mjs'],
     fallback: {
-      fs: false,
+      fs: false
     },
+    tsConfig: path.join(cwd, './tsconfig.app.json')
   },
+
   externals: {
-    'node-html-to-image': 'node-html-to-image',
+    'node-html-to-image': 'node-html-to-image'
   },
   stats: {
-    warnings: false,
-  },
-};
+    warnings: false
+  }
+}

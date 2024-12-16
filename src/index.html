@@ -7,6 +7,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./index.css">
     <script src="https://plugin.openpix.com.br/v1/openpix.js" async></script>
     <!-- <script>
       fetch('https://gist.githubusercontent.com/HallexCosta/3548628247321ad5eb557031b6a7088e/raw/7a85ce6c65db72cfba42cb64a766f14d1ec2af25/openpix-sdk.js')
@@ -18,7 +19,6 @@
         })
         .catch(err => console.error('Erro ao carregar o script:', err));
     </script> -->
-    
     <title>OpenPix SDK</title>
   </head>
   <body>
@@ -26,6 +26,7 @@
        
     <div 
       class="clickpix"
+      data-appid="Q2xpZW50X0lkXzBlMWViOWEzLWI4MzktNGRkMy1iOWNmLTI3MGFhOWZlNzEwNzpDbGllbnRfU2VjcmV0X2kzNTdMdlZ2MVlXaEViNm5FYzIzcVNpZ09hZXpKeFJkL2EzR0ZZMVJodkE9"
       data-value="200" 
       data-additional-info="chargeType:clickpix,product:123" 
       data-variant="green"
@@ -36,23 +37,36 @@
 
     <div 
       class="clickpix"
-      data-value="600" 
+      data-appid="Q2xpZW50X0lkXzBlMWViOWEzLWI4MzktNGRkMy1iOWNmLTI3MGFhOWZlNzEwNzpDbGllbnRfU2VjcmV0X2kzNTdMdlZ2MVlXaEViNm5FYzIzcVNpZ09hZXpKeFJkL2EzR0ZZMVJodkE9"
+      data-value="60000000" 
       data-additional-info="chargeType:clickpix,product:123" 
       data-variant="green"
       data-customer-fields="phone,email,address"
       data-product-id="2"
     >
-      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 21 21">
-        <path fill="#000" d="M9.478 20.453a2.321 2.321 0 0 1-2.134-1.402L6.72 17.6l-1.075 1.076a2.323 2.323 0 1 1-3.286-3.287l1.075-1.075-1.45-.626A2.323 2.323 0 0 1 2.34 9.3l8.763-2.191a2.336 2.336 0 0 1 2.208.611c.574.574.808 1.42.611 2.209l-2.19 8.765a2.322 2.322 0 0 1-2.254 1.759Zm-2.5-4.98a.77.77 0 0 1 .71.467l1.078 2.496a.775.775 0 0 0 1.463-.118l2.19-8.765a.77.77 0 0 0-.203-.737.77.77 0 0 0-.737-.204l-8.763 2.191a.775.775 0 0 0-.118 1.463l2.496 1.079a.775.775 0 0 1 .24 1.259l-1.88 1.881a.774.774 0 1 0 1.095 1.096l1.88-1.882a.775.775 0 0 1 .548-.227ZM19.64 9.51h-3.097a.775.775 0 0 1 0-1.55h3.098a.775.775 0 0 1 0 1.55ZM16.825 14.761l-2.191-2.191a.775.775 0 0 1 1.095-1.096l2.191 2.192a.775.775 0 0 1-1.095 1.095ZM8.417 6.403 6.227 4.21a.775.775 0 0 1 1.095-1.095l2.19 2.191a.775.775 0 0 1-1.095 1.096ZM12.25 5.268a.775.775 0 0 1-.774-.775V1.394a.775.775 0 1 1 1.55 0v3.1a.775.775 0 0 1-.775.774ZM14.99 6.403a.775.775 0 0 1 0-1.096l2.19-2.191a.774.774 0 1 1 1.095 1.095l-2.19 2.192a.774.774 0 0 1-1.096 0Z"></path>
-      </svg>
-      <div class="flex">
-        Pagar com
-        <strong class="ml-1">click</strong>
-        pix
-      </div> -->
     </div>
 
-    <!-- <script src="../sdk/$openpixSDK.js"></script> -->
+
+    <div class="flex flex-col">
+      <div class="flex w-full h-screen">
+        <div class="w-1/3 h-1/3 border border-red-500"></div>
+        <div class="w-1/3 h-1/3 border border-red-500"></div>
+        <div class="w-1/3 h-1/3 border border-red-500"></div>
+      </div>
+
+
+      <div class="flex w-full h-screen">
+        <div class="w-1/3 h-1/3 border border-red-500"></div>
+        <div class="w-1/3 h-1/3 border border-red-500"></div>
+        <div class="w-1/3 h-1/3 border border-red-500"></div>
+      </div>
+
+      <div class="flex w-full h-screen">
+        <div class="w-1/3 h-1/3 border border-red-500"></div>
+        <div class="w-1/3 h-1/3 border border-red-500"></div>
+        <div class="w-1/3 h-1/3 border border-red-500"></div>
+      </div>
+    </div>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -62,8 +76,16 @@
         window.$openpixSDK.addEvent('beforeCreateCharge', async (nextFn, products, productId) => {
           console.log('beforeHook inside Called')
           console.log({ nextFn, products, productId })
+          function randomNumberByRange(min, max) {
+            const minCeiled = Math.ceil(min)
+            const maxFloored = Math.floor(max)
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled) // The maximum is inclusive and the minimum is inclusive
+          }
 
-          const order = await createOrderWC(products.get(productId))
+          // const order = await createOrderWC(products.get(productId))
+          const order = {
+            orderId: randomNumberByRange(10000, 20000)
+          }
           if (!order) {
             return
           }

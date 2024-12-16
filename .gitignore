@@ -2,7 +2,6 @@ node_modules
 **/node_modules
 npm-debug.log
 .DS_Store
-dist
 build
 .idea
 yarn-error.log
@@ -61,7 +60,6 @@ lerna-debug.log
 .eslintcache
 
 .turbo
-dist/**
 .next/**
 
 build-server
@@ -83,4 +81,6 @@ firebase-config.json
 assets
 yarn.lock
 build
-dist
+.dev
+
+dist/*

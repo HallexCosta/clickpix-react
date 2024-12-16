@@ -3,27 +3,43 @@
   "description": "React as Plugin Lib",
   "version": "1.0.0",
   "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
     "@types/react": "^18.3.12",
+    "clsx": "^2.1.1",
+    "core-js": "^3.39.0",
     "http-server": "^14.1.1",
     "qrcode.react": "^4.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-query": "^3.39.3"
+    "react-hook-form": "^7.54.0",
+    "react-query": "^3.39.3",
+    "rifm": "^0.12.1",
+    "tailwind-merge": "^2.5.5",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@rspack/cli": "1.1.4",
     "@rspack/core": "1.1.4",
     "@rspack/plugin-node-polyfill": "0.5.8",
     "@rspack/plugin-react-refresh": "1.0.0",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^11.0.1",
     "@swc/core": "^1.9.3",
+    "@types/node": "^22.10.2",
     "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
     "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
+    "css-loader": "^7.1.2",
+    "postcss": "^8.4.49",
+    "postcss-loader": "^8.1.1",
     "react-refresh": "^0.14.2",
     "rspack-plugin-dotenv": "^0.0.3",
     "semantic-release": "^24.2.0",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.16",
     "tsconfig-paths-webpack-plugin": "^4.2.0",
     "typescript": "^5.7.2",
     "webpack-merge": "^6.0.1"
@@ -32,6 +48,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build --config rspack/rspackProdConfig.js",
     "dev": "rspack serve --config rspack/rspackDevConfig.js",
-    "start": "http-server -w -p 8085 ."
+    "start": "http-server -w -p 8085 .",
+    "check:format": "biome format",
+    "format": "biome format --fix"
   }
 }

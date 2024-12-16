@@ -19,11 +19,14 @@
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
+    "rootDirs": ["./src", "./sdk"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@sdk/*": ["./sdk/*"]
     },
+    "typeRoots": ["./sdk/@types/index.d.ts", "./src/@types"],
     "noEmitOnError": false
   },
-  "include": ["src"],
+  "include": ["src", "sdk"],
   "exclude": ["src/**/*.spec.ts"]
 }

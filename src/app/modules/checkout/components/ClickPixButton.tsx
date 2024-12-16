@@ -1,5 +1,17 @@
 import { generateCorrelationUniqueId } from '../../../../common/generateCorrelationUniqueId'
-import { type Order, useCheckout } from '../context/useCheckout'
+import {
+  checkChargeIsExpired,
+  checkIsExpiredCharge
+} from '../../charge/common/checkIsExpiredCharge'
+import { ExpiredPixChargeDetailEventBusEnum } from '../../charge/components/ExpiredPixChargeReceipt'
+import { PaidPixChargeReceiptEventBusEnum } from '../../charge/components/PaidPixChargeReceipt'
+import { ChargeDetailByCorrelationIDEventBusEnum } from '../../charge/components/PendingPixCharge'
+import { EventBus } from '../../event-bus/EventBus'
+import {
+  type CheckoutContextProps,
+  type Order,
+  useCheckout
+} from '../context/useCheckout'
 
 type ClickPixButtonProps = {
   productId: string
@@ -10,30 +22,62 @@ export const ClickPixButton = ({
   productId,
   isProductIdRepeated
 }: ClickPixButtonProps) => {
-  const { products, updateCheckoutData, getProduct, openCheckoutModal } =
-    useCheckout()
+  const {
+    setSelectedProductId,
+    setCurrentModal,
+    products,
+    currentModal,
+    updateCheckoutData,
+    getProduct
+  } = useCheckout()
 
   const handleOnClickButton = () => {
-    console.log({ products })
-
     const order = products.get(productId)
+    console.log('handleOnClickButton', { currentModal }, order)
+    if (!order) {
+      return console.error('Order not found', productId)
+    }
 
-    console.log(products.has(productId), order?.status)
-    if (products.has(productId) && order?.status === 'CHARGE_EMITTED') {
-      showChargeDetail(order)
+    setSelectedProductId(productId)
+
+    if (order.paymentStatus.toLocaleLowerCase() === '') {
+      setCurrentModal(currentModal === '' ? 'checkout' : currentModal)
       return
     }
 
-    updateCheckoutData(productId, {
-      ...getProduct(productId),
-      correlationID: generateCorrelationUniqueId(30)
-    })
+    const paymentStatus = order.paymentStatus.toLocaleLowerCase()
 
-    openCheckoutModal(productId)
-  }
+    console.log(
+      currentModal === 'active',
+      checkIsExpiredCharge(order.expiresDate),
+      currentModal,
+      paymentStatus,
+      order
+    )
+    console.log(
+      (currentModal === 'active' && checkIsExpiredCharge(order.expiresDate)) ||
+        paymentStatus === 'expired' ||
+        currentModal === 'expired'
+    )
 
-  const showChargeDetail = (order: Order) => {
-    order.chargeDetailRef?.current?.classList.remove('hidden')
+    // const mockExpire = new Date(order.createdAt?.getTime() + 3 * 1000)
+    // console.log('mockExpire', mockExpire)
+    // console.log(checkIsExpiredCharge(mockExpire))
+
+    if (
+      (paymentStatus === 'active' && checkIsExpiredCharge(order.expiresDate)) ||
+      paymentStatus === 'expired' ||
+      currentModal === 'expired'
+    ) {
+      updateCheckoutData(productId, {
+        ...order,
+        paymentStatus: 'EXPIRED'
+      })
+      setCurrentModal('expired')
+      return console.log('show expired modal')
+    }
+
+    setCurrentModal(paymentStatus as CheckoutContextProps['currentModal'])
   }
 
   const defaultFn = () => {}
@@ -41,7 +85,7 @@ export const ClickPixButton = ({
   return (
     <button
       onClick={isProductIdRepeated ? defaultFn : handleOnClickButton}
-      className="w-fit border-0 outline-none px-4 py-2 bg-teal-400 w-auto rounded-full text-xs flex items-center justify-center gap-1 cursor-pointer"
+      className="w-fit border-0 outline-none px-4 py-3 bg-woovi rounded-full text-xs flex items-center justify-center gap-1 cursor-pointer"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

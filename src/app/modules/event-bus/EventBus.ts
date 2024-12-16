@@ -3,7 +3,9 @@ import type { Order } from '../checkout/context/useCheckout'
 export enum CheckoutEventBusEnum {
   UPDATE_CHECKOUT_DATA = 'updateCheckoutData',
   CLOSE_CHECKOUT_MODAL = 'closeCheckoutModal',
-  OPEN_CHECKOUT_MODAL = 'openCheckoutModal'
+  OPEN_CHECKOUT_MODAL = 'openCheckoutModal',
+  SET_SELECTED_PRODUCT_ID = 'setSelectedProductId',
+  SET_CURRENT_MODAL = 'setCurrentModal'
 }
 
 type ListenerHandlerVoid = () => void
@@ -18,10 +20,9 @@ type CheckoutListenerHandlers =
 type ChargeListeenrHandlers = () => void
 
 type EventMap = {
-  // Define seus eventos e os tipos de argumentos
-  event1: [string, number] // Exemplo: o evento "event1" recebe uma string e um número
-  event2: [boolean] // Exemplo: o evento "event2" recebe um booleano
-  event3: [string, boolean] // Exemplo: o evento "event3" recebe uma string e um booleano
+  event1: [string, number]
+  event2: [boolean]
+  event3: [string, boolean]
   any: any
 }
 

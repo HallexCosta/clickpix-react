@@ -17,6 +17,11 @@ const cwd = process.cwd()
  */
 console.log(path.resolve(__dirname, './src'))
 module.exports = merge(rspackCommonConfig, {
+  output: {
+    hotUpdateMainFilename: 'hot-modules/[hash].hot-update.json', // Change as needed
+    hotUpdateChunkFilename: 'hot-modules/[id].[hash].hot-update.js', // Change as needed
+    path: '.dev'
+  },
   plugins: [
     new rspack.HtmlRspackPlugin({
       template: path.join(cwd, './src/index.html'),
@@ -24,13 +29,9 @@ module.exports = merge(rspackCommonConfig, {
     }),
     new ReactRefreshPlugin()
   ],
-  resolve: {
-    plugins: [
-      new TsconfigPathsPlugin({
-        configFile: path.join(cwd, './tsconfig.json')
-      })
-    ]
-  },
+  // resolve: {
+  //   tsConfig: path.join(cwd, './tsconfig.app.json')
+  // },
   devServer: {
     port: PORT,
     open: '/#/app',
@@ -38,6 +39,7 @@ module.exports = merge(rspackCommonConfig, {
     historyApiFallback: {
       disableDotRule: true
     },
+    static: path.join(cwd, '.dev'),
     devMiddleware: {
       writeToDisk: true
     },

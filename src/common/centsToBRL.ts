@@ -1,4 +1,4 @@
-export const centsToBRL = (cents) => {
+export const centsToBRL = (cents: number) => {
   if (!cents) return '[Without Value]'
 
   // Convert cents to BRL

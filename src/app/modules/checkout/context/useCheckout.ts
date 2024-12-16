@@ -7,32 +7,49 @@ import {
 } from 'react'
 
 export type Order = {
-  productId?: string
-  correlationID?: string
-  value?: number
-  additionalInfo?: string
-  status?: string
-  payerTaxID?: string
-  payerEmail?: string
-  payerName?: string
-  payerPhone?: string
-  paymentLinkUrl?: string
-  chargeDetailRef?: MutableRefObject<HTMLDivElement | null>
+  readonly appid: string
+  comment: string
+  readonly productId: string
+  readonly correlationID: string
+  value: number
+  additionalInfo: string
+  readonly status: string | 'CHARGE_NOT_EMITTED' | 'CHARGE_EMITTED'
+  payerTaxID: string
+  payerEmail: string
+  payerName: string
+  payerPhone: string
+  readonly paymentLinkUrl: string
+  readonly identifier: string
+  readonly expiresIn: number
+  readonly brCode: string
+  readonly createdAt: Date | null
+  readonly isFromTestAccount: boolean
+  readonly expiresDate: Date | null
+  readonly companyNameFriendly: string
+  readonly companyTaxID: string
+  readonly transactionID: string
+  readonly paymentMethod: 'PIX' | string
+  readonly paymentStatus: 'ACTIVE' | 'COMPLETED' | 'EXPIRED' | ''
+  readonly chargeDetailRef: MutableRefObject<HTMLDivElement | null>
 }
 
-type CheckoutContextProps = {
-  currentOrder?: Order | null
-  currentChargeDetailRef: MutableRefObject<HTMLDivElement>
-  setCurrentChargeDetailRef: Dispatch<
-    SetStateAction<MutableRefObject<HTMLDivElement>>
+export type CheckoutContextProps = {
+  currentModal: 'checkout' | 'pending' | 'active' | 'expired' | 'completed' | ''
+  setCurrentModal: Dispatch<
+    SetStateAction<CheckoutContextProps['currentModal']>
   >
-  updateCheckoutData: (selectedProductId: string, data: Order) => void
-  productId: string
+  currentOrder?: Order | null
+  currentChargeDetailRef: MutableRefObject<HTMLDivElement> | null
+  setCurrentChargeDetailRef: Dispatch<
+    SetStateAction<MutableRefObject<HTMLDivElement> | null>
+  >
+  updateCheckoutData: (productId: string, data: Order) => void
+  selectedProductId: string
+  setSelectedProductId: Dispatch<SetStateAction<string>>
   products: Map<string, Order>
-  setProductId: Dispatch<SetStateAction<string>>
   closeCheckoutModal: () => void
   openCheckoutModal: (productId: string) => void
-  getProduct: (productId: string) => Order | undefined
+  getProduct: (productId: string) => Order | null
   checkoutRef: MutableRefObject<HTMLDivElement | null>
   requesting: boolean
   setRequesting: Dispatch<SetStateAction<boolean>>

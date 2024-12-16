@@ -1332,4 +1332,4 @@ export const GetPixChargeByCorrelationIDQuery = String.raw`
     }
   }
 
-`;
+`
