@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/HallexCosta/clickpix-react/compare/v2.0.0...v2.0.1) (2024-12-16)
+
+
+### Bug Fixes
+
+* add GRAPHQL_URL and REST_API_BASE_URL in action build ([ab9790b](https://github.com/HallexCosta/clickpix-react/commit/ab9790bc386bee26b5cbb5a0d0581d396ed266b7))
+* adjust error message to inform need a appid ([7b08136](https://github.com/HallexCosta/clickpix-react/commit/7b0813617ea1d03d06f48655d27cb4b9331baca3))
+
 # [2.0.0](https://github.com/HallexCosta/clickpix-react/compare/v1.0.0...v2.0.0) (2024-12-16)
 
 
