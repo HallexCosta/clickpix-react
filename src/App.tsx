@@ -134,7 +134,7 @@ export const App = () => {
         return
       }
       if (!appid) {
-        console.error('[data-appid] need a value', appid)
+        console.error('[data-appid] need an appid', appid)
         return
       }
       if (!products.has(productId)) {
