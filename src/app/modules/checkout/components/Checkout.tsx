@@ -57,6 +57,10 @@ const checkoutFormSchema = z.object({
     .nonempty('Email é obrigatorio')
     // .email({ message: 'Email é invalido' })
     .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Email é invalido'),
+  ddi: z
+  .string()
+  .min(2, 'Minimo de 2 dígitos')
+  .nonempty('DDI é obrigatorio'),
   phone: z
     .string()
     .min(15, 'Minimo de 14 dígitos')
@@ -74,7 +78,10 @@ export const Checkout = ({ order }: { order: Order }) => {
     watch,
     formState: { errors }
   } = useForm({
-    resolver: zodResolver(checkoutFormSchema)
+    resolver: zodResolver(checkoutFormSchema),
+    defaultValues: {
+      ddi: '55'
+    }
   })
   const { ref: taxIDRefReactHookForm, ...restTaxIDRegister } = register('taxID')
 
@@ -84,6 +91,13 @@ export const Checkout = ({ order }: { order: Order }) => {
     onChange: setPhoneText,
     format: phoneMask
   })
+
+  const [ddiText, setDDIText] = useState('55')
+  // const ddiRifm = useRifm({
+  //   value: ddiText,
+  //   onChange: setDDIText,
+  //   // format: (str: string) => `+${str}`
+  // })
   const [taxIDText, setTaxIDText] = useState('')
   const taxIDRifm = useRifm({
     value: taxIDText,
@@ -91,8 +105,6 @@ export const Checkout = ({ order }: { order: Order }) => {
     format: taxIDMask
   })
 
-  const [emailText, setEmailText] = useState('')
-  // const watchEmail = watch('email')
   const watchFields = watch()
   const { hooks } = useEventHooks()
   const {
@@ -148,6 +160,7 @@ export const Checkout = ({ order }: { order: Order }) => {
     const additionalInfo = additionalInfoMapper.toArray(order.additionalInfo)
 
     const correlationID = generateCorrelationUniqueId(30)
+    const completePhone = `+${watchFields.ddi}${unMaskValue.removeAllDigits(order.payerPhone)}`
     const chargeBody = {
       value: Number(order.value),
       correlationID,
@@ -155,7 +168,7 @@ export const Checkout = ({ order }: { order: Order }) => {
         name: order.payerName,
         email: order.payerEmail,
         taxID: unMaskValue.removeAllDigits(order.payerTaxID),
-        phone: unMaskValue.removeAllDigits(order.payerPhone)
+        phone: completePhone
       },
       comment: order.comment,
       additionalInfo
