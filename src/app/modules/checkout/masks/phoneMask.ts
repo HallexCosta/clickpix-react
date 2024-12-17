@@ -1,6 +1,5 @@
 export const phoneMask = (str: string) => {
   const digits = str.replace(/\D+/g, '')
-  console.log('entrei aqui', digits)
 
   return digits
     .replace(/(\d{1,2})/, '($1) ')

@@ -16,16 +16,12 @@ const RenderCheckoutChargePix = ({
   orders
 }: { orders: Map<string, Order> }) => {
   const { selectedProductId, currentModal } = useCheckout()
-  console.log('RenderChargePixCheckout', { selectedProductId, orders })
-
+  
   return Array.from(orders, ([productId, order]) => {
-    console.log(order.status, productId, selectedProductId)
     const shouldViewChargePixCheckout =
       order.status === 'CHARGE_NOT_EMITTED' &&
       productId === selectedProductId &&
       currentModal === 'checkout'
-
-    console.log({ shouldViewChargePixCheckout })
 
     return (
       shouldViewChargePixCheckout && <Checkout key={productId} order={order} />
@@ -38,10 +34,8 @@ const RenderPendingPixCharges = ({
 }: { orders: Map<string, Order> }) => {
   const { selectedProductId, currentModal } = useCheckout()
 
-  console.log('RenderPendingPixCharges', selectedProductId, currentModal)
 
   return Array.from(orders, ([productId, order]) => {
-    console.log(order.status, order.paymentStatus, productId, selectedProductId)
     const shouldViewRenderPendingPixCharge =
       order.status === 'CHARGE_EMITTED' &&
       order.paymentStatus === 'ACTIVE' &&
@@ -60,7 +54,6 @@ const RenderPaidPixChargeReceipts = ({
   orders
 }: { orders: Map<string, Order> }) => {
   const { selectedProductId, currentModal } = useCheckout()
-  console.log('RenderPaidPixChargeReceipts')
   return Array.from(orders, ([productId, order]) => {
     const shouldViewPaidPixChargeReceipt =
       order.status === 'CHARGE_EMITTED' &&
@@ -80,7 +73,6 @@ const RenderExpiredPixChargeReceipts = ({
   orders
 }: { orders: Map<string, Order> }) => {
   const { selectedProductId, currentModal } = useCheckout()
-  console.log('RenderExpiredPixChargeReceipts')
   return Array.from(orders, ([productId, order]) => {
     const shouldViewExpiredPixChargeReceipt =
       order.status === 'CHARGE_EMITTED' &&
@@ -88,11 +80,6 @@ const RenderExpiredPixChargeReceipts = ({
       productId === selectedProductId &&
       currentModal === 'expired'
 
-    console.log(
-      'shouldViewExpiredPixChargeReceipt',
-      productId,
-      shouldViewExpiredPixChargeReceipt
-    )
     return (
       shouldViewExpiredPixChargeReceipt && (
         <ExpiredPixChargeReceipt key={productId} order={order} />
@@ -192,7 +179,6 @@ export const App = () => {
           'ring-offset-0.5',
           'rounded-full'
         )
-        console.log(htmlClickPix)
         console.error('[data-product-id] cannot have a duplicate value')
       }
     }

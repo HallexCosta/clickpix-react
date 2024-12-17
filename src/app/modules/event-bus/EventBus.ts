@@ -34,7 +34,6 @@ export const EventBus = {
 
     const listener = this.listeners.get(eventName)!
 
-    console.log({ listener })
 
     if (!args) return listener()
 

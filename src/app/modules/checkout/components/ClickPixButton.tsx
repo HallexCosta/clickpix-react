@@ -33,7 +33,6 @@ export const ClickPixButton = ({
 
   const handleOnClickButton = () => {
     const order = products.get(productId)
-    console.log('handleOnClickButton', { currentModal }, order)
     if (!order) {
       return console.error('Order not found', productId)
     }
