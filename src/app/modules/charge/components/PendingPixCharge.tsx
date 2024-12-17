@@ -135,7 +135,7 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
 
   return (
     <div
-      className="modal w-full h-[100vh] fixed"
+      className="modal w-full h-[100vh] fixed z-10"
       id="pendingChargePixDetail"
       data-product-id={order.productId}
       ref={chargeDetailRef}

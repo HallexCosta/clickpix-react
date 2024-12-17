@@ -55,7 +55,7 @@ export const PaidPixChargeReceipt = ({ order }: { order: Order }) => {
 
   return (
     <div
-      className="modal w-full h-[100vh] fixed"
+      className="modal w-full h-[100vh] fixed z-10"
       id="paid-pix-charge-receipt"
       data-product-id={order.productId}
       ref={paidPixChargeReceiptRef}
