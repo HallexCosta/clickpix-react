@@ -271,7 +271,7 @@ export const Checkout = ({ order }: { order: Order }) => {
     <div
       id="checkout"
       ref={checkoutRef}
-      className="w-full h-full rounded-md mx-auto flex items-center justify-center fixed"
+      className="w-full h-full rounded-md mx-auto flex items-center justify-center fixed z-10"
       onKeyUp={(e) => {
         e.key.toLocaleLowerCase() === 'escape' ? closeModal() : () => {}
       }}
