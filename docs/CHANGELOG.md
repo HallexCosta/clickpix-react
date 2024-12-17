@@ -1,3 +1,10 @@
+# [2.1.0-beta.1](https://github.com/HallexCosta/clickpix-react/compare/v2.0.3-beta.2...v2.1.0-beta.1) (2024-12-17)
+
+
+### Features
+
+* render additionalInfo in PendingPixCharge ([17b2320](https://github.com/HallexCosta/clickpix-react/commit/17b23204a6e5687779d9437ae4eec11f2f8b4894))
+
 ## [2.0.3-beta.2](https://github.com/HallexCosta/clickpix-react/compare/v2.0.3-beta.1...v2.0.3-beta.2) (2024-12-17)
 
 
