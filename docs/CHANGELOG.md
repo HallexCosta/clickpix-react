@@ -1,3 +1,10 @@
+## [2.0.3-beta.2](https://github.com/HallexCosta/clickpix-react/compare/v2.0.3-beta.1...v2.0.3-beta.2) (2024-12-17)
+
+
+### Bug Fixes
+
+* remove all digits from taxID and phone before execute hook crete ([fe905a7](https://github.com/HallexCosta/clickpix-react/commit/fe905a7b914c183070f4c46067327013805e0e88))
+
 ## [2.0.3-beta.1](https://github.com/HallexCosta/clickpix-react/compare/v2.0.2...v2.0.3-beta.1) (2024-12-17)
 
 
