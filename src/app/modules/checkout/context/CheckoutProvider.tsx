@@ -21,7 +21,6 @@ export const CheckoutProvider = ({ children }) => {
   const [selectedProductId, setSelectedProductId] = useState<string>('')
 
   const updateCheckoutData = (productId: string, data: Order) => {
-    console.log('updateCheckoutData')
     if (!productId) {
       console.error(
         'cannot update currentOrder if productId is empty string or null'

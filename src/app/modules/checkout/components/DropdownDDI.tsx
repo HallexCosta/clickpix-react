@@ -4,7 +4,6 @@ import { useState } from 'react'
 export const TriggerDrowpdownDDI = ({ errors, watchFields }) => {
   const [open, setOpen] = useState()
 
-  console.log({ errors, watchFields })
   return (
     <button
       id="dropdown-phone-button"

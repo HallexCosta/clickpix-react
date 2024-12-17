@@ -109,12 +109,6 @@ export const Checkout = ({ order }: { order: Order }) => {
 
   React.useEffect(() => {
     if (taxIDRef.current) taxIDRef.current.focus()
-    console.log({
-      currentOrder,
-      selectedProductId,
-      setSelectedProductId,
-      updateCheckoutData
-    })
   }, [])
 
   const closeModal = () => {
@@ -130,7 +124,6 @@ export const Checkout = ({ order }: { order: Order }) => {
     const beforeCreateChargeFn = hooks.get('beforeCreateCharge')
     if (beforeCreateChargeFn) {
       const hookId = await beforeCreateChargeFn(productId)
-      console.log(hookId, globalHookIds.get('beforeCreateCharge'))
       if (
         hookId !== globalHookIds.get('beforeCreateCharge') &&
         typeof globalHookIds.get('beforeCreateCharge') === 'string'
@@ -167,7 +160,6 @@ export const Checkout = ({ order }: { order: Order }) => {
       comment: order.comment,
       additionalInfo
     }
-    console.log({ order, chargeBody })
 
     // const chargeResponse = await chargeCreate(chargeBody)
     const createChargeResponse = await createPixChargeRequest(
@@ -183,7 +175,6 @@ export const Checkout = ({ order }: { order: Order }) => {
       chargeBody.correlationID,
       order.appid
     )
-    console.log({ createChargeResponse, wooviChargeQuery })
 
     const product = getProduct(productId)
     if (!product) {
@@ -226,7 +217,6 @@ export const Checkout = ({ order }: { order: Order }) => {
   const handleCreateOrder: SubmitHandler<
     z.infer<typeof checkoutFormSchema>
   > = async (data: z.infer<typeof checkoutFormSchema>) => {
-    console.log({ data })
     if (!checkoutRef.current) return console.log('Form not find in window')
 
     const productId = order.productId
@@ -238,7 +228,6 @@ export const Checkout = ({ order }: { order: Order }) => {
     }
 
     if (currentOrder.status === 'CHARGE_EMITTED') {
-      console.log('charge emitted')
       setCurrentModal('active')
       return
     }
