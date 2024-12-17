@@ -258,10 +258,10 @@ export const Checkout = ({ order }: { order: Order }) => {
 
     const newOrder: Order = {
       ...currentOrder,
-      payerTaxID: data.taxID,
+      payerTaxID: unMaskValue.removeAllDigits(data.taxID),
       payerName: data.name,
       payerEmail: data.email,
-      payerPhone: data.phone
+      payerPhone: unMaskValue.removeAllDigits(data.phone)
     }
     updateCheckoutData(productId, newOrder)
     const success = await handlerHookBeforeCreateCharge(productId)
