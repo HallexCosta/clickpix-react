@@ -16,16 +16,6 @@ export enum ExpiredPixChargeDetailEventBusEnum {
 
 export const ExpiredPixChargeReceipt = ({ order }: { order: Order }) => {
   const { setCurrentModal, setSelectedProductId } = useCheckout()
-  // const [order, setOrder] = useState<Order | null>({
-  //   additionalInfo: 'orderId:some-id-123,chargeType:clickpix,product:123',
-  //   paymentMethod: 'PIX',
-  //   paymentStatus: 'ACTIVE',
-  //   value: 900,
-  //   companyNameFriendly: 'Teste',
-  //   identifier: '30ad1dd5e76348f3b95eb74dc1e9690d',
-  //   companyTaxID: '57687963000122',
-  //   transactionID: 'E196d764143454da08433781a5c753581'
-  // } as Order)
 
   const closeModal = () => {
     setCurrentModal('')
@@ -33,7 +23,7 @@ export const ExpiredPixChargeReceipt = ({ order }: { order: Order }) => {
   }
 
   return (
-    <div className="modal w-full h-[100vh] fixed" id="expiredPixChargeReceipt">
+    <div className="modal w-full h-[100vh] fixed z-10" id="expiredPixChargeReceipt">
       <div className="w-full h-[100vh] bg-black opacity-50 absolute z-0"></div>
       <div className="modal-inner relative flex items-center justify-center h-[100vh]">
         <div className="modal-content flex flex-col items-center justify-center  w-[480px] max-h-[820px] rounded-lg bg-white">
