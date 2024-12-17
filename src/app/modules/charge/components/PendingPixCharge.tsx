@@ -12,6 +12,7 @@ import { type Order, useCheckout } from '../../checkout/context/useCheckout'
 import { cnpjMask } from '../../checkout/masks/cnpjMask'
 import { CheckoutEventBusEnum, EventBus } from '../../event-bus/EventBus'
 import { globalProducts } from '../../products/hooks/useProducts'
+import { additionalInfoMapper } from '../mapper/additionalInfoMapper'
 import { hideCNPJMask } from '../masks/hideCNPJMask'
 import { fetchPixChargeQuery } from '../services/fetchPixChargeQuery'
 import { fetchSyncChargeUpdateStatus } from '../services/fetchSyncChargeUpdate'
@@ -135,7 +136,7 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
 
   return (
     <div
-      className="modal w-full h-[100vh] fixed z-10"
+      className="modal w-full h-[100vh] fixed z-10 font-sans"
       id="pendingChargePixDetail"
       data-product-id={order.productId}
       ref={chargeDetailRef}
@@ -263,6 +264,25 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
                 {order && (
                   <p className="text-sm text-zinc-400">{order.identifier}</p>
                 )}
+
+                <h4 className="text-lg text-black font-bold">
+                  Informações Adicionais
+                </h4>
+                {additionalInfoMapper
+                  .toArray(order.additionalInfo)
+                  .map((additionalInfo, index) => (
+                    <div
+                      key={`${additionalInfo.key}-${index}`}
+                      className="flex flex-col items-center justify-center"
+                    >
+                      <strong className="text-sm text-black font-bold">
+                        {additionalInfo.key}
+                      </strong>
+                      <span className="text-sm text-zinc-400">
+                        {additionalInfo.value}
+                      </span>
+                    </div>
+                  ))}
               </div>
 
               <div className="md:max-w-[360px] flex flex-col items-center justify-center">
