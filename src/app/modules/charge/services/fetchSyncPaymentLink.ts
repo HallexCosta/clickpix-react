@@ -8,10 +8,8 @@ export const fetchSyncPaymentLink = (
   appid: string
 ) => {
   const memorySyncPaymentLinkTimeoutId = setTimeout(() => {
-    console.log({ correlationID })
     fetchPixChargeQuery(correlationID, appid)
       .then(({ data }) => {
-        console.log('start here', data)
 
         if (!data.charge) {
           return fetchSyncPaymentLink(productId, correlationID, appid)
