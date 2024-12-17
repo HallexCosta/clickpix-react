@@ -1,3 +1,11 @@
+## [2.0.3-beta.1](https://github.com/HallexCosta/clickpix-react/compare/v2.0.2...v2.0.3-beta.1) (2024-12-17)
+
+
+### Bug Fixes
+
+* add z-10 in modal containers ([7b334a9](https://github.com/HallexCosta/clickpix-react/commit/7b334a956d18813a534dfd8f9b085e1b22840a99))
+* **modules/checkout:** add ddi in customer phone when create new charge ([a981419](https://github.com/HallexCosta/clickpix-react/commit/a981419c2b681535eb58fae061b1095ebc6abfb8))
+
 ## [2.0.2](https://github.com/HallexCosta/clickpix-react/compare/v2.0.1...v2.0.2) (2024-12-16)
 
 
