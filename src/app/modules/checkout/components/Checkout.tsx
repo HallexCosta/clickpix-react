@@ -57,10 +57,7 @@ const checkoutFormSchema = z.object({
     .nonempty('Email é obrigatorio')
     // .email({ message: 'Email é invalido' })
     .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Email é invalido'),
-  ddi: z
-  .string()
-  .min(2, 'Minimo de 2 dígitos')
-  .nonempty('DDI é obrigatorio'),
+  ddi: z.string().min(2, 'Minimo de 2 dígitos').nonempty('DDI é obrigatorio'),
   phone: z
     .string()
     .min(15, 'Minimo de 14 dígitos')
@@ -166,11 +163,10 @@ export const Checkout = ({ order }: { order: Order }) => {
 
     const additionalInfo = additionalInfoMapper.toArray(order.additionalInfo)
 
-    const correlationID = generateCorrelationUniqueId(30)
     const completePhone = `+${watchFields.ddi}${unMaskValue.removeAllDigits(order.payerPhone)}`
     const chargeBody = {
       value: Number(order.value),
-      correlationID,
+      correlationID: order.correlationID,
       customer: {
         name: order.payerName,
         email: order.payerEmail,
@@ -216,7 +212,6 @@ export const Checkout = ({ order }: { order: Order }) => {
           .additionalInfo as CreateAdditionalInfoResponse[]
       ),
       paymentMethod: 'PIX',
-      correlationID,
       paymentStatus: createChargeResponse.charge.paymentMethods.pix.status,
       transactionID:
         createChargeResponse.charge.paymentMethods.pix.transactionID,
@@ -261,7 +256,8 @@ export const Checkout = ({ order }: { order: Order }) => {
       payerTaxID: unMaskValue.removeAllDigits(data.taxID),
       payerName: data.name,
       payerEmail: data.email,
-      payerPhone: unMaskValue.removeAllDigits(data.phone)
+      payerPhone: unMaskValue.removeAllDigits(data.phone),
+      correlationID: generateCorrelationUniqueId(30)
     }
     updateCheckoutData(productId, newOrder)
     const success = await handlerHookBeforeCreateCharge(productId)
