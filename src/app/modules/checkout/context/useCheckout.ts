@@ -11,7 +11,7 @@ export type Order = {
   comment: string
   readonly productId: string
   readonly correlationID: string
-  value: number
+  readonly value: number
   additionalInfo: string
   readonly status: string | 'CHARGE_NOT_EMITTED' | 'CHARGE_EMITTED'
   payerTaxID: string
