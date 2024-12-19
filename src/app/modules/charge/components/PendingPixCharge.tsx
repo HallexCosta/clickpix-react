@@ -190,7 +190,7 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
 
               <WooviSvgLogo />
 
-              <h4 className="text-xl font-bold text-align">
+              <h4 className="text-xl font-bold text-align font-sans">
                 Pague {centsToBRL(order.value)} para Teste via Pix
               </h4>
 
@@ -201,7 +201,7 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
                   )}
                 </div>
 
-                <p className="mx auto 1/2 text-muted text-tiny text-center">
+                <p className="mx auto 1/2 text-muted text-tiny text-center font-sans">
                   Abra o app do seu banco, escaneie a imagem ou cole o código QR
                   Code
                 </p>
@@ -210,7 +210,7 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
                   {order && <CopyQRCodeButton brCode={order.brCode} />}
                   {order && (
                     <button
-                      className="flex items-center justify-center gap-2 w-full text-[#133A6f] text-center py-3 text-md rounded-md uppercase border border-[#133A6f]"
+                      className="flex items-center justify-center gap-2 w-full text-[#133A6f] text-center py-3 text-md rounded-md uppercase border border-[#133A6f] font-sans"
                       onClick={() => {
                         const phone = '+5518997887240'
                         const text = `Pague para Teste através da OpenPix. ${order.paymentLinkUrl}`
@@ -226,7 +226,7 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
                   <button
                     disabled
                     className="
-                      flex items-center justify-center gap-2 w-full text-[#133A6f] text-center py-3 text-md rounded-md uppercase border border-[#133A6f]
+                      flex items-center justify-center gap-2 w-full text-[#133A6f] text-center py-3 text-md rounded-md uppercase border border-[#133A6f] font-sans
                       disabled:border-zinc-400 disabled:text-zinc-300
                     "
                   >
@@ -236,33 +236,39 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
               </div>
 
               <div className="md:max-w-[360px] flex flex-col justify-center items-center gap-1.5">
-                <h3 className="text-lg text-black font-bold">
+                <h3 className="text-lg text-black font-bold font-sans">
                   Prazo de Pagamento
                 </h3>
 
                 <div className="flex gap-2">
                   <ClockSvgIcon />
-                  <span className="text-lg text-zinc-400">
+                  <span className="text-lg text-zinc-400 font-sans">
                     {expirationTimeText}
                   </span>
                 </div>
-                <h2 className="text-lg text-black font-bold ">
+                <h2 className="text-lg text-black font-bold font-sans">
                   Detalhes da transação
                 </h2>
-                <h4 className="text-sm text-black font-bold">Destinátario</h4>
+                <h4 className="text-sm text-black font-bold font-sans">
+                  Destinátario
+                </h4>
                 {order && (
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-zinc-400 font-sans">
                     {order.companyNameFriendly}
                   </p>
                 )}
                 {order && (
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-zinc-400 font-sans">
                     CNPJ: {hideCNPJMask(cnpjMask(order.companyTaxID))}
                   </p>
                 )}
-                <h4 className="text-sm text-black font-bold">Identificador</h4>
+                <h4 className="text-sm text-black font-bold font-sans">
+                  Identificador
+                </h4>
                 {order && (
-                  <p className="text-sm text-zinc-400">{order.identifier}</p>
+                  <p className="text-sm text-zinc-400 font-sans">
+                    {order.identifier}
+                  </p>
                 )}
 
                 <h4 className="text-lg text-black font-bold">
