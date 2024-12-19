@@ -1,3 +1,19 @@
+# [2.1.0-beta.2](https://github.com/HallexCosta/clickpix-react/compare/v2.1.0-beta.1...v2.1.0-beta.2) (2024-12-19)
+
+
+### Bug Fixes
+
+* add fonts-sans in text tags ([7087250](https://github.com/HallexCosta/clickpix-react/commit/7087250a4c136db9c1ccce4be1d92d8d861e95a0))
+* ensure beforeCreateCharge is executed once ([fa88809](https://github.com/HallexCosta/clickpix-react/commit/fa8880985c82d91d14a98ba7cfabba2c189b8d5c))
+* handle error taxID invalid from woovi api ([f8c1b98](https://github.com/HallexCosta/clickpix-react/commit/f8c1b98692309c08363664656cbac7621d127682))
+
+
+### Features
+
+* add AdditionalInfo interface ([df2113f](https://github.com/HallexCosta/clickpix-react/commit/df2113f56502f038d74b4207e398e890af9183f7))
+* add readonly hookId in order interface ([5ce44fc](https://github.com/HallexCosta/clickpix-react/commit/5ce44fc3e2d0100c002b704d4c09105f9fef1f83))
+* **sdk:** filter repeated additionalInfo keys ([8cae91b](https://github.com/HallexCosta/clickpix-react/commit/8cae91b2257ae802008c2e0ed4e318cdc882c968))
+
 # [2.1.0-beta.1](https://github.com/HallexCosta/clickpix-react/compare/v2.0.3-beta.2...v2.1.0-beta.1) (2024-12-17)
 
 
