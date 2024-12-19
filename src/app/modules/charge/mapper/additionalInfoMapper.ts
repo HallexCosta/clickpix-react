@@ -1,4 +1,7 @@
-import type { AdditionalInfo } from '../services/createPixChargeRequest'
+export interface AdditionalInfo {
+  key: string
+  value: string
+}
 
 export const additionalInfoMapper = {
   toArray(additionalInfo: string) {
