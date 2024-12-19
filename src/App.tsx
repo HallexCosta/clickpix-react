@@ -162,7 +162,8 @@ export const App = () => {
           paymentMethod: '',
           paymentStatus: '',
           transactionID: '',
-          isFromTestAccount: false
+          isFromTestAccount: false,
+          hookId: ''
         })
 
         setAllClickPix((prev) => {
