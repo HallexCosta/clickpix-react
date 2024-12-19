@@ -27,3 +27,11 @@ jobs:
       - run: npx semantic-release
         env: 
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Deploy to new-clickpix.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'new-clickpix.surge.sh'
+          project: './dist'
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
