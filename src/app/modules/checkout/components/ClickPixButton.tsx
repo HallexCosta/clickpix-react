@@ -1,8 +1,5 @@
 import { generateCorrelationUniqueId } from '../../../../common/generateCorrelationUniqueId'
-import {
-  checkChargeIsExpired,
-  checkIsExpiredCharge
-} from '../../charge/common/checkIsExpiredCharge'
+import { checkIsExpiredCharge } from '../../charge/common/checkIsExpiredCharge'
 import { ExpiredPixChargeDetailEventBusEnum } from '../../charge/components/ExpiredPixChargeReceipt'
 import { PaidPixChargeReceiptEventBusEnum } from '../../charge/components/PaidPixChargeReceipt'
 import { ChargeDetailByCorrelationIDEventBusEnum } from '../../charge/components/PendingPixCharge'
