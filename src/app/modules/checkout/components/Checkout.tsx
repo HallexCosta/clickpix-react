@@ -73,11 +73,17 @@ export const Checkout = ({ order }: { order: Order }) => {
     getValues,
     handleSubmit,
     watch,
+    setError,
+    clearErrors,
     formState: { errors }
   } = useForm({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
-      ddi: '55'
+      ddi: '55',
+      taxID: '',
+      email: '',
+      name: '',
+      phone: ''
     }
   })
   const { ref: taxIDRefReactHookForm, ...restTaxIDRegister } = register('taxID')
@@ -186,6 +192,16 @@ export const Checkout = ({ order }: { order: Order }) => {
 
     if (createChargeResponse.error) {
       console.error(createChargeResponse.error)
+      if (createChargeResponse.error === 'CPF ou CNPJ de cliente inválido') {
+        setError('taxID', {
+          type: 'value',
+          message: createChargeResponse.error
+        })
+      } else {
+        alert(createChargeResponse.error)
+      }
+      setRequesting(false)
+      return
     }
 
     const wooviChargeQuery = await fetchPixChargeQuery(
@@ -361,10 +377,10 @@ export const Checkout = ({ order }: { order: Order }) => {
 
               <OpenPixLogo />
 
-              <h4 className="text-lg font-bold text-align">
+              <h4 className="text-lg font-sans font-bold text-align">
                 Pague {centsToBRL(order.value)} para Teste via Pix
               </h4>
-              <h5 className="text-md font-normal text-align text-muted text-zinc-400">
+              <h5 className="text-md font-normal font-sans text-align text-muted text-zinc-400">
                 Insira seus dados para continuar
               </h5>
               <form
@@ -548,7 +564,7 @@ export const Checkout = ({ order }: { order: Order }) => {
                 </div>
 
                 <button
-                  className="w-full text-xs bg-green-500 text-white p-3 rounded-md disabled:text-muted disabled:bg-gray-200"
+                  className="w-full font-sans text-xs bg-green-500 text-white p-3 rounded-md disabled:text-muted disabled:bg-gray-200"
                   type="submit"
                   disabled={requesting}
                 >
