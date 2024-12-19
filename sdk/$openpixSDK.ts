@@ -1,3 +1,4 @@
+import { additionalInfoMapper } from '../src/app/modules/charge/mapper/additionalInfoMapper'
 import type { Order } from '../src/app/modules/checkout/context/useCheckout'
 import {
   globalEventHooks,
@@ -39,6 +40,20 @@ export const $initializeOpenpixSDK = () => {
         console.error('Cannot update property "value"')
         return false
       }
+
+      const additionalInfos = additionalInfoMapper.toArray(
+        updatedData.additionalInfo
+      )
+      const keys = [] as string[]
+
+      additionalInfos.filter((additionalInfo) => {
+        if (!keys.includes(additionalInfo.key)) {
+          keys.push(additionalInfo.key)
+          return true
+        }
+
+        return false
+      })
 
       // updateInReact
       EventBus.emit(CheckoutEventBusEnum.UPDATE_CHECKOUT_DATA, [
