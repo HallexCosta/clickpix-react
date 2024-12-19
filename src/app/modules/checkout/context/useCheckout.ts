@@ -31,6 +31,7 @@ export type Order = {
   readonly paymentMethod: 'PIX' | string
   readonly paymentStatus: 'ACTIVE' | 'COMPLETED' | 'EXPIRED' | ''
   readonly chargeDetailRef: MutableRefObject<HTMLDivElement | null>
+  readonly hookId: string
 }
 
 export type CheckoutContextProps = {
