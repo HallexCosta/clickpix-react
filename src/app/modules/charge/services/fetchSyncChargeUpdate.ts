@@ -7,12 +7,6 @@ export const fetchSyncChargeUpdateStatus = (
   order: Order,
   ref: MutableRefObject<number>
 ) => {
-  console.log(
-    'fetchSyncChargeUpdateStatus',
-    order.productId,
-    order.correlationID,
-    order.appid
-  )
   const memorySyncChargeUpdateTimeoutId = setTimeout(() => {
     console.log({
       memorySyncChargeUpdateTimeoutId,
@@ -21,14 +15,12 @@ export const fetchSyncChargeUpdateStatus = (
     fetchPixChargeQuery(order.correlationID, order.appid)
       .then(({ data }) => {
         const paymentStatus = data.charge.status ?? ''
-        console.log({ paymentStatus })
 
         if (paymentStatus === 'COMPLETED') {
           const newOrder = {
             ...order,
             paymentStatus
           }
-          console.log({ newOrder })
           EventBus.emit(CheckoutEventBusEnum.UPDATE_CHECKOUT_DATA, [
             order.productId,
             newOrder
@@ -41,7 +33,6 @@ export const fetchSyncChargeUpdateStatus = (
             ...order,
             paymentStatus
           }
-          console.log({ newOrder })
           EventBus.emit(CheckoutEventBusEnum.UPDATE_CHECKOUT_DATA, [
             order.productId,
             newOrder

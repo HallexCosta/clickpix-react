@@ -33,7 +33,6 @@ export enum ChargeDetailByCorrelationIDEventBusEnum {
 export const openChargeDetailModal = (
   chargeDetailRef: MutableRefObject<HTMLDivElement | null>
 ) => {
-  console.log('openChargeDetailModal', chargeDetailRef)
   if (!chargeDetailRef.current) return
 
   chargeDetailRef.current.classList.remove('hidden')
