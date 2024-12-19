@@ -139,12 +139,24 @@ export const Checkout = ({ order }: { order: Order }) => {
 
   const handlerHookBeforeCreateCharge = async (productId: string) => {
     setRequesting(true)
-    console.log('> creteOrder')
-    // hooks.
+    console.log('> handlerHookBeforeCreateCharge')
+
+    const order = getProduct(productId)
+
+    if (order && order.hookId === globalHookIds.get('beforeCreateCharge')) {
+      console.warn('hook beforeCreateCharge already executed')
+      return true
+    }
 
     const beforeCreateChargeFn = hooks.get('beforeCreateCharge')
     if (beforeCreateChargeFn) {
       const hookId = await beforeCreateChargeFn(productId)
+
+      const order = getProduct(productId) as Order
+      updateCheckoutData(productId, {
+        ...order,
+        hookId
+      })
       console.log(hookId, globalHookIds.get('beforeCreateCharge'))
       if (
         hookId !== globalHookIds.get('beforeCreateCharge') &&
@@ -277,10 +289,12 @@ export const Checkout = ({ order }: { order: Order }) => {
     }
     updateCheckoutData(productId, newOrder)
     const success = await handlerHookBeforeCreateCharge(productId)
+
     if (!success) {
       console.error('abort create charge event')
       return
     }
+
     await createCharge(productId)
   }
 
