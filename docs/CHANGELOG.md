@@ -1,3 +1,23 @@
+# [2.1.0](https://github.com/HallexCosta/clickpix-react/compare/v2.0.2...v2.1.0) (2024-12-21)
+
+
+### Bug Fixes
+
+* add fonts-sans in text tags ([b9f6c10](https://github.com/HallexCosta/clickpix-react/commit/b9f6c10afe9a6999998f09fb7ad9110f7cc4d8f9))
+* add z-10 in modal containers ([66d65c6](https://github.com/HallexCosta/clickpix-react/commit/66d65c6fb92881c59d2a1c32dfc835bf0b4242af))
+* ensure beforeCreateCharge is executed once ([01cc493](https://github.com/HallexCosta/clickpix-react/commit/01cc4931875dbb4e7a2542c5880c8d5b6059c4aa))
+* handle error taxID invalid from woovi api ([4a5934f](https://github.com/HallexCosta/clickpix-react/commit/4a5934f6ba5a6d97f5a09991e3b3ee3bed5fe7ea))
+* **modules/checkout:** add ddi in customer phone when create new charge ([f28ea7b](https://github.com/HallexCosta/clickpix-react/commit/f28ea7b97a8abf8cd275b0080ca8ef873647a9d6))
+* remove all digits from taxID and phone before execute hook crete ([503b8bf](https://github.com/HallexCosta/clickpix-react/commit/503b8bf805ee5bdce2d220e4284814c32d083e44))
+
+
+### Features
+
+* add AdditionalInfo interface ([79a03a9](https://github.com/HallexCosta/clickpix-react/commit/79a03a977e9f04c866058cff6a739bf07e162621))
+* add readonly hookId in order interface ([4b390eb](https://github.com/HallexCosta/clickpix-react/commit/4b390eb72a950e9688e74876a430f1eacaca6d50))
+* render additionalInfo in PendingPixCharge ([3b17a21](https://github.com/HallexCosta/clickpix-react/commit/3b17a2168a68b7659f117b8ef80e1babd423b19d))
+* **sdk:** filter repeated additionalInfo keys ([ef8f585](https://github.com/HallexCosta/clickpix-react/commit/ef8f5853c56e35934031e41547d6ccf7d7bbdc9d))
+
 # [2.1.0-beta.1](https://github.com/HallexCosta/clickpix-react/compare/v2.0.2...v2.1.0-beta.1) (2024-12-21)
 
 
