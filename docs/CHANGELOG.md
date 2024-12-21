@@ -18,6 +18,26 @@
 * render additionalInfo in PendingPixCharge ([c176e39](https://github.com/HallexCosta/clickpix-react/commit/c176e39cdc3e614d33259bb8fcaa7883eddeca19))
 * **sdk:** filter repeated additionalInfo keys ([39d50c0](https://github.com/HallexCosta/clickpix-react/commit/39d50c09ac7f9be1181200f7f8bef76a7b68dd4c))
 
+# [2.1.0-beta.1](https://github.com/HallexCosta/clickpix-react/compare/v2.0.2...v2.1.0-beta.1) (2024-12-21)
+
+
+### Bug Fixes
+
+* add fonts-sans in text tags ([bdc096c](https://github.com/HallexCosta/clickpix-react/commit/bdc096c45ec7c65c5a546a449708422fab55d634))
+* add z-10 in modal containers ([d244c8d](https://github.com/HallexCosta/clickpix-react/commit/d244c8d9fef72c6ce9f2f6d055c837cedfa04173))
+* ensure beforeCreateCharge is executed once ([d22990e](https://github.com/HallexCosta/clickpix-react/commit/d22990e2e65542b719727a5db04dbf8a3738b71b))
+* handle error taxID invalid from woovi api ([07bf0f4](https://github.com/HallexCosta/clickpix-react/commit/07bf0f49d040cee5a25297cd3b18d62a6ea88aaa))
+* **modules/checkout:** add ddi in customer phone when create new charge ([4115b9e](https://github.com/HallexCosta/clickpix-react/commit/4115b9e58fcb078a9935423ac5ea0b1846eec58b))
+* remove all digits from taxID and phone before execute hook crete ([90008af](https://github.com/HallexCosta/clickpix-react/commit/90008aff48cd35e95fd89749688c8da7106730d5))
+
+
+### Features
+
+* add AdditionalInfo interface ([e4ed0d5](https://github.com/HallexCosta/clickpix-react/commit/e4ed0d5d4a1f1fa78c16909601dc0fccbde9806a))
+* add readonly hookId in order interface ([43c8505](https://github.com/HallexCosta/clickpix-react/commit/43c8505786d1cdac896db9ea2bc0dfd8474ec754))
+* render additionalInfo in PendingPixCharge ([c176e39](https://github.com/HallexCosta/clickpix-react/commit/c176e39cdc3e614d33259bb8fcaa7883eddeca19))
+* **sdk:** filter repeated additionalInfo keys ([39d50c0](https://github.com/HallexCosta/clickpix-react/commit/39d50c09ac7f9be1181200f7f8bef76a7b68dd4c))
+
 # [2.1.0-beta.2](https://github.com/HallexCosta/clickpix-react/compare/v2.1.0-beta.1...v2.1.0-beta.2) (2024-12-19)
 
 
