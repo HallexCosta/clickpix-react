@@ -57,7 +57,6 @@ const getChargeExpirationTimeText = (expirationTime: Date) => {
 
 export const PendingPixCharge = ({ order }: { order: Order }) => {
   const {
-    selectedProductId,
     setSelectedProductId,
     setCurrentModal,
     updateCheckoutData,

@@ -70,7 +70,6 @@ export const PaidPixChargeReceipt = ({ order }: { order: Order }) => {
               onClick={closeModal}
               className="modal-close bg-transparent outline-none border-none"
               type="button"
-              // onClick={() => alert('clicked')}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -100,8 +99,6 @@ export const PaidPixChargeReceipt = ({ order }: { order: Order }) => {
             [&::-webkit-scrollbar-thumb]:rounded-lg
           "
           >
-            {/* <div className="w-1/6"></div> */}
-
             <div className="mx-auto flex flex-col items-center"></div>
 
             <div className="mx-auto flex flex-col items-center gap-2 mt-4">
@@ -132,52 +129,56 @@ export const PaidPixChargeReceipt = ({ order }: { order: Order }) => {
                 </div>
 
                 <div className="w-fit mx-auto">
-                  <h4 className="font-bold text-base text-center">
+                  <h4 className="font-bold text-base text-center fonts-sans">
                     Método de pagamento
                   </h4>
-                  <p className="text-base text-center">{order.paymentMethod}</p>
+                  <p className="text-base text-center fonts-sans">
+                    {order.paymentMethod}
+                  </p>
                 </div>
 
                 <div className="w-fit mx-auto flex flex-col gap-2">
-                  <h4 className="font-bold text-base text-center">
+                  <h4 className="font-bold text-base text-center font-sans">
                     Detalhes da transação
                   </h4>
 
                   <div className="flex flex-col items-center justify-center">
-                    <h4 className="font-bold text-base text-center">
+                    <h4 className="font-bold text-base text-center font-sans">
                       Destinatário
                     </h4>
 
-                    <p className="text-base text-center">
+                    <p className="text-base text-center font-sans">
                       {order.companyNameFriendly}
                     </p>
 
                     {order.companyTaxID && (
-                      <p className="text-base text-center">
+                      <p className="text-base text-center font-sans">
                         CNPJ: {hideCNPJMask(cnpjMask(order.companyTaxID))}
                       </p>
                     )}
                   </div>
 
                   <div className="flex flex-col items-center justify-center">
-                    <h4 className="font-bold text-base text-center">
+                    <h4 className="font-bold text-base text-center font-sans">
                       Identificador
                     </h4>
 
-                    <p className="text-base text-center">{order.identifier}</p>
+                    <p className="text-base text-center font-sans">
+                      {order.identifier}
+                    </p>
                   </div>
 
                   <div className="flex flex-col items-center justify-center">
-                    <h4 className="font-bold text-base text-center">
+                    <h4 className="font-bold text-base text-center font-sans">
                       ID da Transação
                     </h4>
-                    <p className="text-base text-center">
+                    <p className="text-base text-center font-sans">
                       {order.transactionID}
                     </p>
                   </div>
 
                   <div className="flex flex-col items-center justify-center">
-                    <h5 className="font-bold text-base text-center">
+                    <h5 className="font-bold text-base text-center font-sans">
                       Informações Adicionais
                     </h5>
 
@@ -189,8 +190,12 @@ export const PaidPixChargeReceipt = ({ order }: { order: Order }) => {
                             key={additionalInfo.value}
                             className="flex flex-col items-center justify-center"
                           >
-                            <strong>{additionalInfo.key}</strong>
-                            <span>{additionalInfo.value}</span>
+                            <strong className="font-sans">
+                              {additionalInfo.key}
+                            </strong>
+                            <span className="font-sans">
+                              {additionalInfo.value}
+                            </span>
                           </div>
                         )
                       }
@@ -200,12 +205,14 @@ export const PaidPixChargeReceipt = ({ order }: { order: Order }) => {
               </div>
 
               <div className="md:max-w-[360px] flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center gap-2 text-zinc-300 text-sm">
+                <div className="flex items-center justify-center gap-2 text-zinc-300 text-sm font-sans">
                   Pagamento 100% criptografado via
                   <WooviSvgLogoMuted />
                 </div>
 
-                <p className="text-zinc-300 text-sm mt-1.5 mb-8">(v5.2.72)</p>
+                <p className="text-zinc-300 text-sm mt-1.5 mb-8 font-sans">
+                  (v5.2.72)
+                </p>
               </div>
             </div>
             {/* <div className="w-1/6"></div> */}

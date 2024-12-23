@@ -23,7 +23,10 @@ export const ExpiredPixChargeReceipt = ({ order }: { order: Order }) => {
   }
 
   return (
-    <div className="modal w-full h-[100vh] fixed z-10" id="expiredPixChargeReceipt">
+    <div
+      className="modal w-full h-[100vh] fixed z-10"
+      id="expiredPixChargeReceipt"
+    >
       <div className="w-full h-[100vh] bg-black opacity-50 absolute z-0"></div>
       <div className="modal-inner relative flex items-center justify-center h-[100vh]">
         <div className="modal-content flex flex-col items-center justify-center  w-[480px] max-h-[820px] rounded-lg bg-white">
@@ -63,8 +66,6 @@ export const ExpiredPixChargeReceipt = ({ order }: { order: Order }) => {
             [&::-webkit-scrollbar-thumb]:rounded-lg
           "
           >
-            {/* <div className="w-1/6"></div> */}
-
             <div className="mx-auto flex flex-col items-center"></div>
 
             <div className="mx-auto flex flex-col items-center gap-2 mt-4">
@@ -72,38 +73,40 @@ export const ExpiredPixChargeReceipt = ({ order }: { order: Order }) => {
 
               <XSvgIcon />
 
-              <h4 className="text-2xl font-bold text-align mt-2">
+              <h4 className="text-2xl font-bold text-align mt-2 font-sans">
                 Cobrança expirada
               </h4>
 
-              <p className="text-lg text-zinc-500 font-medium">
+              <p className="text-lg text-zinc-500 font-medium font-sans">
                 O prazo para pagamento dessa cobrança expirou.
               </p>
 
               <div className="max-w-[360px] flex flex-col justify-center items-center gap-5">
                 <div className="w-fit mx-auto">
-                  <h4 className="font-bold text-base text-center">
+                  <h4 className="font-bold text-base text-center font-sans">
                     Valor pago
                   </h4>
-                  <p className="text-base text-center">
+                  <p className="text-base text-center font-sans">
                     {centsToBRL(order.value)}
                   </p>
                 </div>
 
                 <div className="w-fit mx-auto">
-                  <h4 className="font-bold text-base text-center">
+                  <h4 className="font-bold text-base text-center font-sans">
                     Método de pagamento
                   </h4>
-                  <p className="text-base text-center">{order.paymentMethod}</p>
+                  <p className="text-base text-center font-sans">
+                    {order.paymentMethod}
+                  </p>
                 </div>
 
                 <div className="w-fit mx-auto flex flex-col gap-2">
-                  <h4 className="font-bold text-base text-center">
+                  <h4 className="font-bold text-base text-center font-sans">
                     Detalhes da transação
                   </h4>
 
                   <div className="flex flex-col items-center justify-center">
-                    <h4 className="font-bold text-base text-center">
+                    <h4 className="font-bold text-base text-center font-sans">
                       Destinatário
                     </h4>
 
@@ -112,31 +115,33 @@ export const ExpiredPixChargeReceipt = ({ order }: { order: Order }) => {
                     </p>
 
                     {order.companyTaxID && (
-                      <p className="text-base text-center">
+                      <p className="text-base text-center font-sans">
                         CNPJ: {hideCNPJMask(cnpjMask(order.companyTaxID))}
                       </p>
                     )}
                   </div>
 
                   <div className="flex flex-col items-center justify-center">
-                    <h4 className="font-bold text-base text-center">
+                    <h4 className="font-bold text-base text-center font-sans">
                       Identificador
                     </h4>
 
-                    <p className="text-base text-center">{order.identifier}</p>
+                    <p className="text-base text-center font-sans">
+                      {order.identifier}
+                    </p>
                   </div>
 
                   <div className="flex flex-col items-center justify-center">
-                    <h4 className="font-bold text-base text-center">
+                    <h4 className="font-bold text-base text-center font-sans">
                       ID da Transação
                     </h4>
-                    <p className="text-base text-center">
+                    <p className="text-base text-center font-sans">
                       {order.transactionID}
                     </p>
                   </div>
 
                   <div className="flex flex-col items-center justify-center">
-                    <h5 className="font-bold text-base text-center">
+                    <h5 className="font-bold text-base text-center font-sans">
                       Informações Adicionais
                     </h5>
 
@@ -148,8 +153,12 @@ export const ExpiredPixChargeReceipt = ({ order }: { order: Order }) => {
                             key={additionalInfo.value}
                             className="flex flex-col items-center justify-center"
                           >
-                            <strong>{additionalInfo.key}</strong>
-                            <span>{additionalInfo.value}</span>
+                            <strong className="font-sans">
+                              {additionalInfo.key}
+                            </strong>
+                            <span className="font-sans">
+                              {additionalInfo.value}
+                            </span>
                           </div>
                         )
                       }
@@ -159,12 +168,14 @@ export const ExpiredPixChargeReceipt = ({ order }: { order: Order }) => {
               </div>
 
               <div className="md:max-w-[360px] flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center gap-2 text-zinc-300 text-sm">
+                <div className="flex items-center justify-center gap-2 text-zinc-300 text-sm font-sans">
                   Pagamento 100% criptografado via
                   <WooviSvgLogoMuted />
                 </div>
 
-                <p className="text-zinc-300 text-sm mt-1.5 mb-8">(v5.2.72)</p>
+                <p className="text-zinc-300 text-sm mt-1.5 mb-8 font-sans">
+                  (v5.2.72)
+                </p>
               </div>
             </div>
             {/* <div className="w-1/6"></div> */}
