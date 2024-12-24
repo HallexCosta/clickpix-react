@@ -9,6 +9,7 @@ import {
   EventBus
 } from '../src/app/modules/event-bus/EventBus'
 import { globalProducts } from '../src/app/modules/products/hooks/useProducts'
+import { validateImuttableProperties } from './core/validations/validateImmutableProperties'
 
 export const $initializeOpenpixSDK = () => {
   // openpix settings
@@ -18,8 +19,8 @@ export const $initializeOpenpixSDK = () => {
   const availableStates = ['products']
 
   window.$openpixSDK = {
-    updateIn(memoryId: string, state: string, updatedData: Order) {
-      console.log('> updateIn', memoryId, state, updatedData)
+    updateIn(memoryId: string | number, state: string, updatedOrder: Order) {
+      console.log('> updateIn', memoryId, state, updatedOrder)
       const states = {
         products: globalProducts
       }
@@ -35,14 +36,13 @@ export const $initializeOpenpixSDK = () => {
         return false
       }
 
-      const oldData = memory.get(memoryId)
-      if (updatedData.value !== oldData.value) {
-        console.error('Cannot update property "value"')
+      const oldOrder = memory.get(memoryId)
+      if (!validateImuttableProperties.canMutate(oldOrder, updatedOrder)) {
         return false
       }
 
       const additionalInfos = additionalInfoMapper.toArray(
-        updatedData.additionalInfo
+        updatedOrder.additionalInfo
       )
       const keys = [] as string[]
 
@@ -58,7 +58,7 @@ export const $initializeOpenpixSDK = () => {
       // updateInReact
       EventBus.emit(CheckoutEventBusEnum.UPDATE_CHECKOUT_DATA, [
         memoryId,
-        updatedData
+        updatedOrder
       ])
       return true
     },
