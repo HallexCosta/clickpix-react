@@ -46,7 +46,7 @@ export const $initializeOpenpixSDK = () => {
       )
       const keys = [] as string[]
 
-      additionalInfos.filter((additionalInfo) => {
+      const newAdditionalInfos = additionalInfos.filter((additionalInfo) => {
         if (!keys.includes(additionalInfo.key)) {
           keys.push(additionalInfo.key)
           return true
@@ -54,6 +54,8 @@ export const $initializeOpenpixSDK = () => {
 
         return false
       })
+      updatedOrder.additionalInfo =
+        additionalInfoMapper.toString(newAdditionalInfos)
 
       // updateInReact
       EventBus.emit(CheckoutEventBusEnum.UPDATE_CHECKOUT_DATA, [
