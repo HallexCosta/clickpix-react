@@ -31,14 +31,6 @@ export enum ChargeDetailByCorrelationIDEventBusEnum {
   UPDATE_CHARGE_DETAIL = 'updateStateChargeDetail'
 }
 
-export const openChargeDetailModal = (
-  chargeDetailRef: MutableRefObject<HTMLDivElement | null>
-) => {
-  if (!chargeDetailRef.current) return
-
-  chargeDetailRef.current.classList.remove('hidden')
-}
-
 const getChargeExpirationTimeText = (expirationTime: Date) => {
   const now = new Date()
   const diffInMs = expirationTime.getTime() - now.getTime()
@@ -64,7 +56,6 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
   } = useCheckout()
   const [updateExpirationTimeTimeoutId, setUpdateExpirationTimeTimeoutId] =
     useState(0)
-  const chargeDetailRef = useRef<HTMLDivElement>(null)
   const updateExpirationTimeTimeoutIdRef = useRef<number>(0)
   const fetchSyncChargeUpdateStatusRef = useRef<number>(0)
 
@@ -138,7 +129,6 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
       className="modal w-full h-[100vh] fixed z-10 font-sans"
       id="pendingChargePixDetail"
       data-product-id={order.productId}
-      ref={chargeDetailRef}
     >
       <div className="w-full h-[100vh] bg-black opacity-50 absolute z-0"></div>
       <div className="modal-inner relative flex items-center justify-center h-[100vh]">
@@ -146,7 +136,6 @@ export const PendingPixCharge = ({ order }: { order: Order }) => {
           <div className="modal-header flex justify-between items-center p-4 w-full">
             <ClickPixIcon />
             <button
-              // onClick={() => closeChargeDetailModal(chargeDetailRef)}
               className="modal-close bg-transparent outline-none border-none"
               type="button"
               onClick={closeModal}

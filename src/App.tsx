@@ -16,7 +16,7 @@ const RenderCheckoutChargePix = ({
   orders
 }: { orders: Map<string, Order> }) => {
   const { selectedProductId, currentModal } = useCheckout()
-  
+
   return Array.from(orders, ([productId, order]) => {
     const shouldViewChargePixCheckout =
       order.status === 'CHARGE_NOT_EMITTED' &&
@@ -33,7 +33,6 @@ const RenderPendingPixCharges = ({
   orders
 }: { orders: Map<string, Order> }) => {
   const { selectedProductId, currentModal } = useCheckout()
-
 
   return Array.from(orders, ([productId, order]) => {
     const shouldViewRenderPendingPixCharge =
@@ -93,7 +92,6 @@ export const App = () => {
 
   const [allClickPix, setAllClickPix] = useState<RenderClickPixButton[]>([])
 
-  const defaultRef = useRef(null)
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLDivElement>('.clickpix')
 
@@ -135,7 +133,6 @@ export const App = () => {
           payerEmail: '',
           correlationID: '',
           brCode: '',
-          chargeDetailRef: defaultRef,
           comment: '',
           companyNameFriendly: '',
           companyTaxID: '',

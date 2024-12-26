@@ -30,7 +30,6 @@ export type Order = {
   readonly transactionID: string
   readonly paymentMethod: 'PIX' | string
   readonly paymentStatus: 'ACTIVE' | 'COMPLETED' | 'EXPIRED' | ''
-  readonly chargeDetailRef: MutableRefObject<HTMLDivElement | null>
   readonly hookId: string
 }
 
@@ -40,18 +39,11 @@ export type CheckoutContextProps = {
     SetStateAction<CheckoutContextProps['currentModal']>
   >
   currentOrder?: Order | null
-  currentChargeDetailRef: MutableRefObject<HTMLDivElement> | null
-  setCurrentChargeDetailRef: Dispatch<
-    SetStateAction<MutableRefObject<HTMLDivElement> | null>
-  >
   updateCheckoutData: (productId: string, data: Order) => void
   selectedProductId: string
   setSelectedProductId: Dispatch<SetStateAction<string>>
   products: Map<string, Order>
-  closeCheckoutModal: () => void
-  openCheckoutModal: (productId: string) => void
   getProduct: (productId: string) => Order | null
-  checkoutRef: MutableRefObject<HTMLDivElement | null>
   requesting: boolean
   setRequesting: Dispatch<SetStateAction<boolean>>
 }

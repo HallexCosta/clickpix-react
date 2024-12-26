@@ -118,7 +118,6 @@ export const Checkout = ({ order }: { order: Order }) => {
     setSelectedProductId,
     updateCheckoutData,
     getProduct,
-    checkoutRef,
     setCurrentModal
   } = useContext(CheckoutContext)
 
@@ -254,8 +253,6 @@ export const Checkout = ({ order }: { order: Order }) => {
   const handleCreateOrder: SubmitHandler<
     z.infer<typeof checkoutFormSchema>
   > = async (data: z.infer<typeof checkoutFormSchema>) => {
-    if (!checkoutRef.current) return console.log('Form not find in window')
-
     const productId = order.productId
     const currentOrder = getProduct(productId)
     if (!currentOrder) {
@@ -297,7 +294,6 @@ export const Checkout = ({ order }: { order: Order }) => {
   return (
     <div
       id="checkout"
-      ref={checkoutRef}
       className="w-full h-full rounded-md mx-auto flex items-center justify-center fixed z-10"
       onKeyUp={(e) => {
         e.key.toLocaleLowerCase() === 'escape' ? closeModal() : () => {}
