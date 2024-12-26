@@ -1,3 +1,11 @@
+# [2.2.0-beta.1](https://github.com/HallexCosta/clickpix-react/compare/v2.1.0...v2.2.0-beta.1) (2024-12-26)
+
+
+### Features
+
+* **sdk:** ensure sdk.updateIn cannot update read-only properties ([76862b1](https://github.com/HallexCosta/clickpix-react/commit/76862b1c887c39a5ca32685dc5db532c4dc33365)), closes [#5](https://github.com/HallexCosta/clickpix-react/issues/5)
+* **sdk:** filter repeated keys of additionalInfos ([5ec3c54](https://github.com/HallexCosta/clickpix-react/commit/5ec3c545f516189a72c966e67a1a8c942a2078c3))
+
 # [2.1.0](https://github.com/HallexCosta/clickpix-react/compare/v2.0.2...v2.1.0) (2024-12-21)
 
 
